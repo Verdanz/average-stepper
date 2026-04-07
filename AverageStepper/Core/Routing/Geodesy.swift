@@ -24,4 +24,13 @@ enum Geodesy {
         let locB = CLLocation(latitude: b.latitude, longitude: b.longitude)
         return locA.distance(from: locB)
     }
+
+    /// Used by routing DTO `Equatable` — `CLLocationCoordinate2D` synthesis can fail under strict concurrency.
+    static func coordinatesEqual(_ a: [CLLocationCoordinate2D], _ b: [CLLocationCoordinate2D]) -> Bool {
+        guard a.count == b.count else { return false }
+        for i in 0..<a.count {
+            if a[i].latitude != b[i].latitude || a[i].longitude != b[i].longitude { return false }
+        }
+        return true
+    }
 }

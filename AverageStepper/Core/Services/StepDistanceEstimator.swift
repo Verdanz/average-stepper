@@ -1,6 +1,6 @@
 import Foundation
 
-/// Stateless stride math used by planning UI and route scoring previews.
+/// Default implementation of `StepDistanceEstimating`: stride × steps, rounded step counts from distance, and ETA from speed.
 struct StepDistanceEstimator: StepDistanceEstimating {
     func targetMeters(forSteps steps: Int, strideMeters: Double) -> Double {
         estimatedDistanceMeters(forSteps: steps, strideMeters: strideMeters)

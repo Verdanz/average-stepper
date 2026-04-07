@@ -18,4 +18,16 @@ final class StepDistanceEstimatorTests: XCTestCase {
         let d = estimator.estimatedDuration(distanceMeters: 1400, speedMetersPerSecond: 1.4)
         XCTAssertEqual(d, 1000, accuracy: 0.001)
     }
+
+    func testZeroStrideOrStepsReturnsZeroDistance() {
+        let estimator = StepDistanceEstimator()
+        XCTAssertEqual(estimator.estimatedDistanceMeters(forSteps: 1000, strideMeters: 0), 0)
+        XCTAssertEqual(estimator.estimatedDistanceMeters(forSteps: 0, strideMeters: 0.76), 0)
+    }
+
+    func testEstimatedStepsZeroForInvalidInput() {
+        let estimator = StepDistanceEstimator()
+        XCTAssertEqual(estimator.estimatedSteps(forDistanceMeters: 0, strideMeters: 0.76), 0)
+        XCTAssertEqual(estimator.estimatedSteps(forDistanceMeters: 100, strideMeters: 0), 0)
+    }
 }

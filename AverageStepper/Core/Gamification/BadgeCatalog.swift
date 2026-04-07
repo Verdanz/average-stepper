@@ -2,14 +2,8 @@ import Foundation
 
 /// Static badge definitions (titles + rules). Add rows here to grow the system.
 enum BadgeCatalog {
-    struct Definition: Equatable, Sendable {
-        var id: String
-        var badge: Badge
-        var rule: BadgeRule
-    }
-
-    static let all: [Definition] = [
-        Definition(
+    static let all: [BadgeDefinition] = [
+        BadgeDefinition(
             id: "first_steps",
             badge: Badge(
                 id: "first_steps",
@@ -19,7 +13,7 @@ enum BadgeCatalog {
             ),
             rule: .totalWalksCompleted(atLeast: 1)
         ),
-        Definition(
+        BadgeDefinition(
             id: "walks_5",
             badge: Badge(
                 id: "walks_5",
@@ -29,7 +23,7 @@ enum BadgeCatalog {
             ),
             rule: .totalWalksCompleted(atLeast: 5)
         ),
-        Definition(
+        BadgeDefinition(
             id: "walks_10",
             badge: Badge(
                 id: "walks_10",
@@ -39,7 +33,7 @@ enum BadgeCatalog {
             ),
             rule: .totalWalksCompleted(atLeast: 10)
         ),
-        Definition(
+        BadgeDefinition(
             id: "walks_25",
             badge: Badge(
                 id: "walks_25",
@@ -49,7 +43,7 @@ enum BadgeCatalog {
             ),
             rule: .totalWalksCompleted(atLeast: 25)
         ),
-        Definition(
+        BadgeDefinition(
             id: "steps_3k",
             badge: Badge(
                 id: "steps_3k",
@@ -59,7 +53,7 @@ enum BadgeCatalog {
             ),
             rule: .firstWalkReachingSteps(atLeast: 3000)
         ),
-        Definition(
+        BadgeDefinition(
             id: "steps_5k",
             badge: Badge(
                 id: "steps_5k",
@@ -69,7 +63,7 @@ enum BadgeCatalog {
             ),
             rule: .firstWalkReachingSteps(atLeast: 5000)
         ),
-        Definition(
+        BadgeDefinition(
             id: "steps_10k",
             badge: Badge(
                 id: "steps_10k",
@@ -79,7 +73,7 @@ enum BadgeCatalog {
             ),
             rule: .firstWalkReachingSteps(atLeast: 10_000)
         ),
-        Definition(
+        BadgeDefinition(
             id: "streak_3",
             badge: Badge(
                 id: "streak_3",
@@ -89,7 +83,7 @@ enum BadgeCatalog {
             ),
             rule: .currentStreakDays(atLeast: 3)
         ),
-        Definition(
+        BadgeDefinition(
             id: "streak_7",
             badge: Badge(
                 id: "streak_7",
@@ -99,7 +93,7 @@ enum BadgeCatalog {
             ),
             rule: .currentStreakDays(atLeast: 7)
         ),
-        Definition(
+        BadgeDefinition(
             id: "explorer",
             badge: Badge(
                 id: "explorer",
@@ -109,7 +103,7 @@ enum BadgeCatalog {
             ),
             rule: .routeCompletedOnce
         ),
-        Definition(
+        BadgeDefinition(
             id: "consistency",
             badge: Badge(
                 id: "consistency",
@@ -119,7 +113,7 @@ enum BadgeCatalog {
             ),
             rule: .longestStreakDays(atLeast: 10)
         ),
-        Definition(
+        BadgeDefinition(
             id: "lifetime_100k_steps",
             badge: Badge(
                 id: "lifetime_100k_steps",
@@ -129,7 +123,7 @@ enum BadgeCatalog {
             ),
             rule: .lifetimeSteps(atLeast: 100_000)
         ),
-        Definition(
+        BadgeDefinition(
             id: "early_bird",
             badge: Badge(
                 id: "early_bird",
@@ -139,7 +133,7 @@ enum BadgeCatalog {
             ),
             rule: .firstWalkStartingInHourRange(startHour: 5, endHour: 10)
         ),
-        Definition(
+        BadgeDefinition(
             id: "sunset",
             badge: Badge(
                 id: "sunset",

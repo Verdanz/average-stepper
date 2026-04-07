@@ -21,21 +21,15 @@ struct CelebrationConfettiView: View {
 
     var body: some View {
         GeometryReader { geo in
+            let size = geo.size
             ZStack {
-                ForEach(Array(pieces.enumerated()), id: \.element.id) { index, piece in
-                    Circle()
-                        .fill(palette[index % palette.count].opacity(0.45))
-                        .frame(width: piece.size, height: piece.size)
-                        .offset(
-                            x: piece.x + piece.drift * phase,
-                            y: geo.size.height * 0.35 * phase + CGFloat(index % 4) * 6
-                        )
-                        .opacity(1 - 0.55 * phase)
+                ForEach(Array(pieces.indices), id: \.self) { index in
+                    pieceLayer(index: index, size: size)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onAppear {
-                let w = geo.size.width
+                let w = size.width
                 pieces = (0..<32).map { _ in
                     Piece(
                         x: CGFloat.random(in: -w * 0.45 ... w * 0.45),
@@ -49,5 +43,18 @@ struct CelebrationConfettiView: View {
             }
         }
         .allowsHitTesting(false)
+    }
+
+    @ViewBuilder
+    private func pieceLayer(index: Int, size: CGSize) -> some View {
+        let piece = pieces[index]
+        Circle()
+            .fill(palette[index % palette.count].opacity(0.45))
+            .frame(width: piece.size, height: piece.size)
+            .offset(
+                x: piece.x + piece.drift * phase,
+                y: size.height * 0.35 * phase + CGFloat(index % 4) * 6
+            )
+            .opacity(Double(1) - 0.55 * Double(phase))
     }
 }

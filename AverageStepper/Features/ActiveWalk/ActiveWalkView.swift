@@ -24,7 +24,7 @@ struct ActiveWalkView: View {
                         )
                         model = m
                         dependencies.walkSessionManager.setDebugSimulationEnabled(dependencies.debugSimulateWalk)
-                        fitCameraToRoute()
+                        fitCameraToRoute(walk: dependencies.walkSessionManager)
                     }
             }
         }

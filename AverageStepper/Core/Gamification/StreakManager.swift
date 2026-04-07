@@ -1,6 +1,7 @@
 import Foundation
 
-/// Calendar-day streaks from completed walks (local timezone).
+/// Calendar-day walking streaks from completed walks (local `Calendar`, start-of-day normalization).
+/// “Current” streak requires activity today or yesterday; see `streakStats(walkDays:calendar:now:)`.
 enum StreakManager {
     struct StreakStats: Equatable, Sendable {
         /// Consecutive days with ≥1 completed walk, anchored to today or yesterday.

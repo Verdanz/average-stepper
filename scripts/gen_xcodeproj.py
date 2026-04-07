@@ -220,17 +220,17 @@ def main() -> None:
     pb.append("\t\t/* Begin PBXProject section */")
     pb.append(f"\t\t{proj_native} /* Project object */ = {{")
     pb.append("\t\t\tisa = PBXProject;")
-    pb.append("\t\t\tattributes = {{")
+    pb.append("\t\t\tattributes = {")
     pb.append("\t\t\t\tBuildIndependentTargetsInParallel = 1;")
     pb.append("\t\t\t\tLastSwiftUpdateCheck = 1500;")
     pb.append("\t\t\t\tLastUpgradeCheck = 1500;")
-    pb.append("\t\t\t\tTargetAttributes = {{")
+    pb.append("\t\t\t\tTargetAttributes = {")
     pb.append(f"\t\t\t\t\t{target_id} = {{")
     pb.append("\t\t\t\t\t\tCreatedOnToolsVersion = 15.0;")
     pb.append("\t\t\t\t\t\tProvisioningStyle = Automatic;")
-    pb.append("\t\t\t\t\t}};")
-    pb.append("\t\t\t\t}};")
-    pb.append("\t\t\t}};")
+    pb.append("\t\t\t\t\t};")
+    pb.append("\t\t\t\t};")
+    pb.append("\t\t\t};")
     pb.append(
         f"\t\t\tbuildConfigurationList = {proj_config_list} /* Build configuration list for PBXProject \"AverageStepper\" */;"
     )
@@ -305,7 +305,7 @@ def main() -> None:
     ):
         pb.append(f"\t\t{cfg_id} /* {name} */ = {{")
         pb.append("\t\t\tisa = XCBuildConfiguration;")
-        pb.append("\t\t\tbuildSettings = {{")
+        pb.append("\t\t\tbuildSettings = {")
         pb.append("\t\t\t\tASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;")
         pb.append("\t\t\t\tASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;")
         pb.append("\t\t\t\tCODE_SIGN_STYLE = Automatic;")
@@ -336,7 +336,7 @@ def main() -> None:
         pb.append("\t\t\t\tTARGETED_DEVICE_FAMILY = 1;")
         if not is_debug:
             pb.append("\t\t\t\tSWIFT_COMPILATION_MODE = wholemodule;")
-        pb.append("\t\t\t}};")
+        pb.append("\t\t\t};")
         pb.append(f"\t\t\tname = {name};")
         pb.append("\t\t};")
 
@@ -346,7 +346,7 @@ def main() -> None:
     ):
         pb.append(f"\t\t{cfg_id} /* {name} */ = {{")
         pb.append("\t\t\tisa = XCBuildConfiguration;")
-        pb.append("\t\t\tbuildSettings = {{")
+        pb.append("\t\t\tbuildSettings = {")
         pb.append("\t\t\t\tALWAYS_SEARCH_USER_PATHS = NO;")
         pb.append("\t\t\t\tCLANG_ANALYZER_NONNULL = YES;")
         pb.append("\t\t\t\tCLANG_ENABLE_MODULES = YES;")
@@ -362,7 +362,7 @@ def main() -> None:
             pb.append("\t\t\t\tSWIFT_OPTIMIZATION_LEVEL = \"-Onone\";")
         else:
             pb.append("\t\t\t\tSWIFT_COMPILATION_MODE = wholemodule;")
-        pb.append("\t\t\t}};")
+        pb.append("\t\t\t};")
         pb.append(f"\t\t\tname = {name};")
         pb.append("\t\t};")
 
@@ -373,7 +373,7 @@ def main() -> None:
         ):
             pb.append(f"\t\t{cfg_id} /* {name} */ = {{")
             pb.append("\t\t\tisa = XCBuildConfiguration;")
-            pb.append("\t\t\tbuildSettings = {{")
+            pb.append("\t\t\tbuildSettings = {")
             pb.append("\t\t\t\tBUNDLE_LOADER = \"$(TEST_HOST)\";")
             pb.append("\t\t\t\tCODE_SIGN_STYLE = Automatic;")
             pb.append("\t\t\t\tCURRENT_PROJECT_VERSION = 1;")
@@ -394,7 +394,7 @@ def main() -> None:
             pb.append("\t\t\t\tTEST_HOST = \"$(BUILT_PRODUCTS_DIR)/AverageStepper.app/AverageStepper\";")
             if not is_debug:
                 pb.append("\t\t\t\tSWIFT_COMPILATION_MODE = wholemodule;")
-            pb.append("\t\t\t}};")
+            pb.append("\t\t\t};")
             pb.append(f"\t\t\tname = {name};")
             pb.append("\t\t};")
 

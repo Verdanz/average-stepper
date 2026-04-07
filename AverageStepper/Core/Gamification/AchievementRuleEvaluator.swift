@@ -1,5 +1,6 @@
 import Foundation
 
+/// Snapshot of completed-walk history, aggregates, and streaks used to evaluate `BadgeRule` predicates.
 struct GamificationContext: Sendable {
     var completedWalksSorted: [WalkSession]
     var totals: GamificationTotals
@@ -33,7 +34,7 @@ struct GamificationContext: Sendable {
 
 /// Evaluates catalog rules for unlock dates and locked-state progress (0...1).
 enum AchievementRuleEvaluator {
-    static func unlockDate(definition: BadgeCatalog.Definition, context: GamificationContext) -> Date? {
+    static func unlockDate(definition: BadgeDefinition, context: GamificationContext) -> Date? {
         switch definition.rule {
         case .totalWalksCompleted(let n):
             let sorted = context.completedWalksSorted
@@ -74,7 +75,7 @@ enum AchievementRuleEvaluator {
     }
 
     /// Progress toward unlock while locked. Ignored once unlocked.
-    static func progressFraction(definition: BadgeCatalog.Definition, context: GamificationContext) -> Double {
+    static func progressFraction(definition: BadgeDefinition, context: GamificationContext) -> Double {
         if unlockDate(definition: definition, context: context) != nil { return 1 }
 
         switch definition.rule {

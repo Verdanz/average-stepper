@@ -9,6 +9,8 @@ enum LocationAuthorizationState: Sendable {
 }
 
 /// Abstraction over `CLLocationManager` for testability and future background modes.
+/// Isolated to the main actor to match `CLLocationManager` usage and `WalkSessionManager`.
+@MainActor
 protocol LocationProviding: AnyObject {
     var authorizationState: LocationAuthorizationState { get }
     var latestLocation: CLLocation? { get }

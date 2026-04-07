@@ -32,6 +32,16 @@ struct RouteScoreInputs: Equatable, Sendable {
     var estimatedDuration: TimeInterval
     var expectedDuration: TimeInterval
     var coordinates: [CLLocationCoordinate2D]
+
+    static func == (lhs: RouteScoreInputs, rhs: RouteScoreInputs) -> Bool {
+        lhs.targetDistanceMeters == rhs.targetDistanceMeters
+            && lhs.actualDistanceMeters == rhs.actualDistanceMeters
+            && lhs.closureDistanceMeters == rhs.closureDistanceMeters
+            && lhs.segmentCount == rhs.segmentCount
+            && lhs.estimatedDuration == rhs.estimatedDuration
+            && lhs.expectedDuration == rhs.expectedDuration
+            && Geodesy.coordinatesEqual(lhs.coordinates, rhs.coordinates)
+    }
 }
 
 /// Stateless scoring used by the generation pipeline and unit tests.

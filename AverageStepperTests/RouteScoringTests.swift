@@ -39,6 +39,34 @@ final class RouteScoringTests: XCTestCase {
         XCTAssertEqual(fp1, fp2)
     }
 
+    func testHigherClosureIncreasesScore() {
+        let weights = RouteScoreWeights.default
+        let target = 3000.0
+        let coords = sampleCoordinates()
+        let tight = RouteScoreInputs(
+            targetDistanceMeters: target,
+            actualDistanceMeters: 3000,
+            closureDistanceMeters: 20,
+            segmentCount: 4,
+            estimatedDuration: 2000,
+            expectedDuration: 2000,
+            coordinates: coords
+        )
+        let loose = RouteScoreInputs(
+            targetDistanceMeters: target,
+            actualDistanceMeters: 3000,
+            closureDistanceMeters: 400,
+            segmentCount: 4,
+            estimatedDuration: 2000,
+            expectedDuration: 2000,
+            coordinates: coords
+        )
+        XCTAssertLessThan(
+            RouteScorer.score(inputs: tight, weights: weights),
+            RouteScorer.score(inputs: loose, weights: weights)
+        )
+    }
+
     private func sampleCoordinates() -> [CLLocationCoordinate2D] {
         let a = CLLocationCoordinate2D(latitude: 37.33, longitude: -122.01)
         let b = CLLocationCoordinate2D(latitude: 37.331, longitude: -122.011)

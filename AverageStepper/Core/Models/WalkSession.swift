@@ -1,6 +1,6 @@
 import Foundation
 
-/// Lifecycle of a single walk attempt from the user's perspective.
+/// High-level lifecycle for a walk record (persisted with `WalkSession`).
 enum WalkSessionStatus: String, Codable, Hashable, Sendable {
     case idle
     case active
@@ -16,7 +16,8 @@ enum WalkCompletionReason: String, Codable, Hashable, Sendable {
     case aborted
 }
 
-/// Active or completed session snapshot (local-first; no server).
+/// Single walk record: goal, live metrics while active, and completion metadata for history and gamification.
+/// Owned by `WalkSessionManager` during an active walk; completed rows feed `GamificationContext` and streak logic.
 struct WalkSession: Identifiable, Equatable, Hashable, Codable, Sendable {
     var id: UUID
     var startedAt: Date

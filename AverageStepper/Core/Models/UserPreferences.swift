@@ -1,6 +1,7 @@
 import Foundation
 
-/// Persisted user tuning for stride, speed, and first-run state.
+/// User-editable defaults for stride, walking speed, units, onboarding, and the Plan screen’s default step goal.
+/// Loaded/saved via `UserPreferencesStore` and injected through `AppDependencies`.
 struct UserPreferences: Equatable, Sendable {
     /// Average step length in meters (stride).
     var strideMeters: Double

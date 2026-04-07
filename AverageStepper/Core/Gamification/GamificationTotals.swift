@@ -1,6 +1,6 @@
 import Foundation
 
-/// Aggregates from completed walks only.
+/// Running totals (walk count, steps, distance) derived only from `WalkSession`s with `status == .completed`.
 struct GamificationTotals: Equatable, Sendable {
     var totalCompletedWalks: Int
     var totalEstimatedSteps: Int

@@ -12,6 +12,13 @@ import Foundation
 /// 5. **Selection**: prefer candidates inside a relative distance tolerance band; dedupe fingerprints; return top 3.
 ///
 /// All distances along roads come from MapKit; straight-line helpers are only for waypoint placement and closure checks.
+///
+/// ## Real-world brittleness (MVP)
+/// - **No true loop API**: Waypoints are geometric heuristics; `MKDirections` may fail legs, detour, or snap unpredictably near water, highways, or sparse pedestrian graphs.
+/// - **Scale sensitivity**: `WaypointPatternGenerator` uses flat-earth offsets; error grows away from the equator and is not geodesy-exact for long legs.
+/// - **Scoring vs. feasibility**: A low `RouteScorer` score does not guarantee walkability (construction, stairs, private property); tolerance bands are relative to target distance only.
+/// - **Directions churn**: MapKit results can change between iOS releases or server-side data; fingerprints help dedupe but won’t stabilize routing outcomes across devices.
+/// - **Failure modes**: If every pattern throws or yields empty candidates, the pipeline surfaces `RouteGenerationError.noCandidateFound` — UX should treat this as “try another area/time,” not a bug in scoring alone.
 struct RouteGenerationPipeline: Sendable {
     var config: RoutingConfig
     var directions: WalkingDirectionsProviding

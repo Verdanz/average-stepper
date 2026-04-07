@@ -7,6 +7,13 @@ struct AssembledWalkRoute: Sendable, Equatable {
     var estimatedDuration: TimeInterval
     var coordinates: [CLLocationCoordinate2D]
     var segmentCount: Int
+
+    static func == (lhs: AssembledWalkRoute, rhs: AssembledWalkRoute) -> Bool {
+        lhs.distanceMeters == rhs.distanceMeters
+            && lhs.estimatedDuration == rhs.estimatedDuration
+            && lhs.segmentCount == rhs.segmentCount
+            && Geodesy.coordinatesEqual(lhs.coordinates, rhs.coordinates)
+    }
 }
 
 /// Chains `start → … → end` legs using walking directions.
