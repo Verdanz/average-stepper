@@ -17,7 +17,7 @@ enum WalkCompletionReason: String, Codable, Hashable, Sendable {
 }
 
 /// Active or completed session snapshot (local-first; no server).
-struct WalkSession: Identifiable, Equatable, Hashable, Sendable {
+struct WalkSession: Identifiable, Equatable, Hashable, Codable, Sendable {
     var id: UUID
     var startedAt: Date
     var endedAt: Date?

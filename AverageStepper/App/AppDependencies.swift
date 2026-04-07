@@ -12,11 +12,12 @@ final class AppDependencies {
     let stepEstimator: StepDistanceEstimating
     let walkSessionManager: WalkSessionManager
     let achievementEngine: AchievementProviding
+    private let gamificationPersistence: GamificationPersistence
 
     /// When true, show “Simulate walk” on the active walk screen (Simulator-friendly).
     var debugSimulateWalk: Bool = false
 
-    /// Walk history for achievements (MVP: stub array; TODO persist via SwiftData / files).
+    /// Completed walks for achievements (loaded/saved with `GamificationPersistence`).
     var walkHistory: [WalkSession] = []
 
     init(
@@ -25,7 +26,9 @@ final class AppDependencies {
         routeGenerationService: RouteGenerationProviding,
         stepEstimator: StepDistanceEstimating,
         walkSessionManager: WalkSessionManager,
-        achievementEngine: AchievementProviding
+        achievementEngine: AchievementProviding,
+        walkHistory: [WalkSession] = [],
+        gamificationPersistence: GamificationPersistence
     ) {
         self.preferences = preferences
         self.locationService = locationService
@@ -33,6 +36,14 @@ final class AppDependencies {
         self.stepEstimator = stepEstimator
         self.walkSessionManager = walkSessionManager
         self.achievementEngine = achievementEngine
+        self.walkHistory = walkHistory
+        self.gamificationPersistence = gamificationPersistence
+    }
+
+    /// Persists appended session to `walk_history.json`.
+    func recordCompletedWalk(_ session: WalkSession) {
+        walkHistory.append(session)
+        try? gamificationPersistence.save(PersistedGamification(schemaVersion: 1, sessions: walkHistory))
     }
 
     static let live: AppDependencies = {
@@ -43,13 +54,18 @@ final class AppDependencies {
             locationService: location,
             restoreFromDisk: true
         )
+        let gamificationPersistence = GamificationPersistence()
+        let loaded = try? gamificationPersistence.load()
+        let history = loaded?.sessions ?? []
         return AppDependencies(
             preferences: UserPreferences.default,
             locationService: location,
             routeGenerationService: RouteGenerationService(),
             stepEstimator: StepDistanceEstimator(),
             walkSessionManager: walk,
-            achievementEngine: AchievementEngine()
+            achievementEngine: AchievementEngine(),
+            walkHistory: history,
+            gamificationPersistence: gamificationPersistence
         )
     }()
 
@@ -68,13 +84,18 @@ final class AppDependencies {
             stepEstimator: StepDistanceEstimator()
         )
         walk.attachPreviewRoute(mockRoute, option: mockRoute.options[0])
+        let gamificationPersistence = GamificationPersistence(
+            fileURL: FileManager.default.temporaryDirectory.appendingPathComponent("preview_gamification.json")
+        )
         return AppDependencies(
             preferences: MockData.samplePreferences,
             locationService: location,
             routeGenerationService: RouteGenerationService(),
             stepEstimator: StepDistanceEstimator(),
             walkSessionManager: walk,
-            achievementEngine: AchievementEngine()
+            achievementEngine: AchievementEngine(),
+            walkHistory: MockData.sampleCompletedWalkHistory,
+            gamificationPersistence: gamificationPersistence
         )
     }()
 }

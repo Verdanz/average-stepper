@@ -36,7 +36,7 @@ struct ActiveWalkView: View {
         }
         .onChange(of: walk.session.status) { oldStatus, newStatus in
             guard oldStatus == .active, newStatus == .completed else { return }
-            dependencies.walkHistory.append(walk.session)
+            dependencies.recordCompletedWalk(walk.session)
             path = [.walkComplete]
         }
     }

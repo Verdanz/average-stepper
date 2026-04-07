@@ -1,37 +1,29 @@
 import Foundation
 
-/// Rule-based badge evaluation. Replace with data-driven rules or persistence later.
+/// Evaluates `BadgeCatalog` rules against local walk history.
 struct AchievementEngine: AchievementProviding {
-    func achievements(from history: [WalkSession]) -> [Achievement] {
-        let definitions = MockData.allBadgeDefinitions
-        let completed = history.filter { $0.status == .completed }
-
-        return definitions.map { definition in
-            let unlocked = unlockDate(for: definition.id, completedSessions: completed)
+    func achievements(from history: [WalkSession], asOf date: Date) -> [Achievement] {
+        let context = GamificationContext.make(history: history, calendar: .autoupdatingCurrent, now: date)
+        return BadgeCatalog.all.map { definition in
+            let unlocked = AchievementRuleEvaluator.unlockDate(definition: definition, context: context)
+            let progress: Double?
+            if unlocked != nil {
+                progress = nil
+            } else {
+                let p = AchievementRuleEvaluator.progressFraction(definition: definition, context: context)
+                progress = p
+            }
             return Achievement(
                 id: definition.id,
-                badge: definition,
-                unlockedAt: unlocked
+                badge: definition.badge,
+                unlockedAt: unlocked,
+                progress01: progress
             )
         }
     }
 
     func newlyUnlocked(from old: [Achievement], to new: [Achievement]) -> [Achievement] {
-        let oldIds = Set(old.filter(\.isUnlocked).map(\.id))
-        return new.filter { $0.isUnlocked && !oldIds.contains($0.id) }
-    }
-
-    private func unlockDate(for id: String, completedSessions: [WalkSession]) -> Date? {
-        switch id {
-        case "first_walk":
-            return completedSessions.first?.endedAt ?? completedSessions.first?.startedAt
-        case "target_5k":
-            return completedSessions.first(where: { $0.goal.targetSteps >= 5000 })?.endedAt
-        case "target_10k":
-            return completedSessions.first(where: { $0.goal.targetSteps >= 10_000 })?.endedAt
-        default:
-            // TODO: Implement streak_7, streak_30, walker_10 from dated history.
-            return nil
-        }
+        let oldUnlockedIds = Set(old.filter(\.isUnlocked).map(\.id))
+        return new.filter { $0.isUnlocked && !oldUnlockedIds.contains($0.id) }
     }
 }

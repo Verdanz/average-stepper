@@ -18,77 +18,152 @@ struct WalkCompleteView: View {
                     }
             }
         }
-        .navigationTitle("Nice walk!")
+        .navigationTitle("Walk complete")
         .navigationBarTitleDisplayMode(.inline)
     }
 
     @ViewBuilder
     private func content(model: WalkCompleteViewModel) -> some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: Theme.sectionSpacing) {
-                ASCard {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("You wrapped a walk")
-                            .font(Theme.title)
-                        Text(reasonText(for: model.session))
-                            .font(Theme.body)
-                            .foregroundStyle(.secondary)
-                    }
-                }
+        ZStack(alignment: .top) {
+            CelebrationConfettiView()
+                .frame(height: 160)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 4)
 
-                HStack(spacing: 12) {
-                    MetricCard(
-                        title: "Steps",
-                        value: Formatting.steps(model.session.liveSteps),
-                        subtitle: "Goal \(Formatting.steps(model.session.goal.targetSteps))"
-                    )
-                    MetricCard(
-                        title: "Distance",
-                        value: Formatting.distance(model.session.liveDistanceMeters, units: dependencies.preferences.units),
-                        subtitle: "Session total"
-                    )
-                }
-
-                if !model.newAchievements.isEmpty {
+            ScrollView {
+                VStack(alignment: .leading, spacing: Theme.sectionSpacing) {
                     ASCard {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("New achievements")
-                                .font(Theme.headline)
-                            ForEach(model.newAchievements) { achievement in
-                                Label(achievement.badge.title, systemImage: achievement.badge.systemImageName ?? "star.fill")
-                                    .font(Theme.body)
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Nice work")
+                                .font(Theme.title)
+                            Text(reasonText(for: model.session))
+                                .font(Theme.body)
+                                .foregroundStyle(.secondary)
+                            Text(model.encouragement)
+                                .font(Theme.body)
+                                .foregroundStyle(.primary)
+                                .padding(.top, 4)
+                        }
+                    }
+
+                    HStack(spacing: 12) {
+                        MetricCard(
+                            title: "This walk",
+                            value: Formatting.steps(model.session.liveSteps),
+                            subtitle: "Estimated steps"
+                        )
+                        MetricCard(
+                            title: "Distance",
+                            value: Formatting.distance(model.session.liveDistanceMeters, units: dependencies.preferences.units),
+                            subtitle: "Session total"
+                        )
+                    }
+
+                    streakCard(model: model)
+
+                    lifetimeTotalsCard(model: model)
+
+                    if !model.newAchievements.isEmpty {
+                        ASCard {
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text("Earned")
+                                    .font(Theme.headline)
+                                ForEach(model.newAchievements) { achievement in
+                                    HStack(alignment: .top, spacing: 12) {
+                                        Image(systemName: achievement.badge.systemImageName ?? "star.fill")
+                                            .font(.title2)
+                                            .foregroundStyle(Theme.Colors.accent)
+                                            .frame(width: 28, alignment: .center)
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text(achievement.badge.title)
+                                                .font(Theme.body.weight(.semibold))
+                                            Text(achievement.badge.detail)
+                                                .font(Theme.caption)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
-                } else {
-                    ASCard {
-                        Text("Keep walking to unlock streaks and milestone badges.")
-                            .font(Theme.body)
-                            .foregroundStyle(.secondary)
+
+                    PrimaryButton("Plan next walk", systemImage: "house.fill") {
+                        dependencies.walkSessionManager.resetIdle()
+                        path = []
+                        onBackToHome?()
                     }
                 }
-
-                PrimaryButton("Back to home", systemImage: "house.fill") {
-                    dependencies.walkSessionManager.resetIdle()
-                    path = []
-                    onBackToHome?()
-                }
+                .padding()
+                .frame(maxWidth: Theme.contentMaxWidth)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 120)
             }
-            .padding()
-            .frame(maxWidth: Theme.contentMaxWidth)
-            .frame(maxWidth: .infinity)
         }
         .background(Color(.systemGroupedBackground))
+    }
+
+    private func streakCard(model: WalkCompleteViewModel) -> some View {
+        ASCard {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Streak")
+                    .font(Theme.headline)
+                HStack(spacing: 12) {
+                    streakPill(title: "Current", value: "\(model.streakAfter)", highlight: model.streakAfter > model.streakBefore)
+                    streakPill(title: "Best streak", value: "\(model.longestStreak)", highlight: false)
+                }
+                if model.streakAfter > model.streakBefore {
+                    Text("Consecutive days with a completed walk — keep the chain going.")
+                        .font(Theme.caption)
+                        .foregroundStyle(Theme.Colors.muted)
+                }
+            }
+        }
+    }
+
+    private func streakPill(title: String, value: String, highlight: Bool) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title)
+                .font(Theme.caption)
+                .foregroundStyle(.secondary)
+            Text(value)
+                .font(Theme.metric)
+                .foregroundStyle(highlight ? Theme.Colors.accent : .primary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .background(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+        )
+    }
+
+    private func lifetimeTotalsCard(model: WalkCompleteViewModel) -> some View {
+        ASCard {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("All-time")
+                    .font(Theme.headline)
+                LabeledContent("Completed walks") {
+                    Text("\(model.lifetimeTotals.totalCompletedWalks)")
+                }
+                LabeledContent("Estimated steps") {
+                    Text(Formatting.steps(model.lifetimeTotals.totalEstimatedSteps))
+                }
+                LabeledContent("Distance") {
+                    Text(Formatting.distance(model.lifetimeTotals.totalDistanceMeters, units: dependencies.preferences.units))
+                }
+            }
+            .font(Theme.body)
+        }
     }
 
     private func reasonText(for session: WalkSession) -> String {
         switch session.completionReason {
         case .reachedStepGoal:
-            return "You hit your step target. Great pacing."
+            return "You hit your step target."
         case .routeCompleted:
-            return "You covered the planned route. Nice work staying on track."
+            return "You covered your planned route."
         case .userEnded:
-            return "You ended the session early — progress still counts."
+            return "Session saved — you stopped when it was right for you."
         case .aborted:
             return "Session ended."
         case .none:

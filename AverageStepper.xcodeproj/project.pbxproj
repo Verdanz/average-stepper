@@ -5,141 +5,157 @@
 	objectVersion = 56;
 	objects = {
 		/* Begin PBXBuildFile section */
-		600B4689734A484B9A1A0CED /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49E67D77D8B4B66B93FF5E7; };
-		2C8BDD67C89B44398979D29F /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61F47B6DBB4C159A780B2C; };
-		10340895A24F49AFA04FE115 /* ResumeWalkNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63737AC6AF34DD894BEA969; };
-		55F78C73DD1E4741AAE356B9 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3200B2A477E441D696DD08FB; };
-		9FC39B5E4B9540D5B8532EE7 /* AverageStepperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600A478E6F9A481DB7750C3D; };
-		15B057B0118E4DB9BAC2B9C0 /* ActiveWalkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A91A1A290064FA4B8C25DAC; };
-		CFF000F2C8B845B79F55CCD8 /* RoutePolylineGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A01752108A413A9DA12BB6; };
-		A315172328EE49888918B54D /* WalkSessionPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9051BA2FB7834A2EB42BB783; };
-		665F48E91A184C3ABAD7C5AD /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF18EDE660F4B0AB6654238; };
-		C24304E88D384A30A2C4C5B9 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E616DD82A54490DBD48E28B; };
-		FC83C6FA16A347BCBE8BD0D0 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE2198C88F49BD92D75451; };
-		16186F5CD20746599214862A /* GeneratedRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A4AE6876E94DA894DA891C; };
-		5C05B83553ED4D828D5E33A0 /* LatLon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4F2B5E7B5C44608EB01C80; };
-		F2A7F5223677430091E73F29 /* RouteOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C984CBBD22F470595972605; };
-		95872D411D764CFEBD2B17A3 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA225CC47354C8B80C258B1; };
-		9EEF44BDC11D4C31A22D4D2E /* WalkGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9802BC9D7EEE4B1C812FF363; };
-		44E8BFD337C34C47815310CA /* WalkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E5F7A434104324894733E6; };
-		CB55FA7008CF442EB2F7D7C5 /* WalkTrackingPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BC6E529BE84A1086961167; };
-		02D47CD56E9747BFB83854DC /* Geodesy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED747C9D6D41CABAD23218; };
-		C00C05492DDF423C823B3453 /* MKDirectionsWalkingDirectionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4218A90766104927BDF3A22A; };
-		CFBB30EFAF914D7188C2B2B3 /* MockWalkingDirectionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7BE06822EC4B2BB437F10E; };
-		7DFA4733515448BAA8BC6D1B /* RouteGenerationPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE4D8F717B4DD8AC925A5D; };
-		97A5E6F529704C58BAB0F265 /* RoutePatternKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E69EC7B6EA41C98620F9C0; };
-		0128ACB9A9A342B68A824E45 /* RouteScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098336FB82B247AABC98D1A6; };
-		3081C2692C214AE7A4BA24D6 /* RouteWaypointAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CF8861D1CA4989857303A8; };
-		4E8E35E36B4645C1AC347F6B /* RoutingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48737D01AD664912857C8D84; };
-		A1FBBB2215E34F78B5428F58 /* RoutingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B6C668EDF64F36840A4CED; };
-		EF48B8B786A246E790EC89AC /* SegmentRouteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEABA0665B2C4E9A823A4DB6; };
-		37BC2AB864E849EA917C60D6 /* WalkingDirectionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C2DC5F8F4F4F78A9FC5F2F; };
-		B65C36E847044455A2702199 /* WaypointPatternGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87B2A403F14DD78C18B6EE; };
-		CBFFCD8EE94A4D13AEB6B99E /* AchievementEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4651F88FDF08481A8953616C; };
-		9072D963768B47C6A2FBFF97 /* AchievementProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528784858D17484DABD02925; };
-		73EFC5B72D24447D94C75C8C /* LocationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64531BA7A534497CA6B718F1; };
-		6856CDB67E524CD7813A7831 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD9321F4FF4613AEB77B44; };
-		0627989B7CF744C7AA8B87D3 /* RouteGenerationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB207920EF34D878A2E00E1; };
-		4F68611B1DF64D8F93F994B2 /* RouteGenerationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B84247CC1484E56AC2C0C7D; };
-		132E027D9C134823A0F3500D /* StepDistanceEstimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F281B8CD274149FFAE6FFEAE; };
-		30EA5A04328E49A2BC230C5F /* StepDistanceEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB54DD938C1C43D7AEE6E242; };
-		263B584F68F6409A9024A7E5 /* WalkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394758EEA8DC44EC9956B027; };
-		57B365A85DCF45E198B31BE8 /* WalkSessionManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC19D50BAEC245DDBD88E579; };
-		17C98F3A893D411D8C42CE23 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887BDF83B0542F79A843C80; };
-		7E5A142061504E8C842B5A0A /* MapRegion+Fitting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85549FB8ACAC4E1FA0E1FD18; };
-		71AE9F4FC38547038B4CD025 /* ASCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A220B6B230FB4AD1ACD82FAF; };
-		F2F93585FFFD494A926DB8D4 /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C31C3FFB2C4A8CA991C3EE; };
-		B76583E73A8A485A844EDE29 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14981115AF8A405DBD2A1D80; };
-		4D508CB415B24D2680CF16E0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF91B1C5B74F78A4556566; };
-		5947B928493B492CBE9FE321 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B0563D3A8B4DE09020C19F; };
-		663696D6A0B7420FB4062277 /* AchievementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B7F1EE806D47838A1B7DF0; };
-		36176F4CF6504D99829141F2 /* ActiveWalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C217E66D76A4D3298DD012A; };
-		25962D16285B46149D7E94B8 /* ActiveWalkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449850397D53461AAA34113F; };
-		78127CEB640B404F9B771502 /* HomeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D515CC11C1461181E7086E; };
-		483D74F97E214DC1B61F5705 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE1C31C0CE414F87EC3835; };
-		4DEA0924E5FB4050A14D22D3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048FC9B63F3C458F83C88673; };
-		C77BDF6ED2334A219419B858 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133A754EC884E7EA9290808; };
-		FE277DDAA8B1459DBD428454 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBD676EAB144E4B38837A2; };
-		35BF6A024777442FAA22330D /* RoutePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A122E39B636A4C92806C843A; };
-		D64D319B9262484998957C7F /* RoutePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5DA9C76AF14B47BA122D93; };
-		C52E0C639D9C4045AC591693 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C806AAE1AF4CCC87C08210; };
-		638617625F984CC48AEF0B43 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C654542F554CD192CEB337; };
-		E6166424EF394E7CA4541C39 /* WalkCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17DD1A4D714456D99A0E847; };
-		234F016D9CA645E6A9CB07FF /* WalkCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F7F699EA041F5A0E65B6D; };
-		30201BDB92614ECBB738BD6D /* RouteScoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5A175ADEF34A069F1200AB; };
-		B5CB9EF2DEC847589C4BB40E /* StepDistanceEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2AB7ABE17348B78E329013; };
-		6B3B87F42EDA4543B042505C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72A0EBADA4D64C0C8784F112; };
+		2A345479EAD54A78A9E98567 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EA9EE052FB47ED8F142C17; };
+		3601C5AE8BBE4683A6166E36 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1667F7F0B145198D905729; };
+		33C29EAE47364C6DA790F210 /* ResumeWalkNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDB1E75C324E758D25AE95; };
+		8097FEF249814D0BBE83DF21 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE36EC57845C38E4E584D; };
+		DE164E9D453E40E0923C4DFB /* AverageStepperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA71BE3DE01D459AA9A1F74B; };
+		919FF15F9AA341629A817C70 /* ActiveWalkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0242B95106433B8CCFB15F; };
+		944342EB1E1E418B95589010 /* RoutePolylineGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5BD8CD9A384F35ADCAEB3F; };
+		4E34B3FF656542E4942F803A /* WalkSessionPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F730FAF67A63489EA19A1837; };
+		F0F937CF51FB4934A0068BBA /* AchievementRuleEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196099DBE9C74761A9A6CB79; };
+		8E74B009426D40F69E434FB8 /* BadgeCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E10B9A0DEA843CEA27B5C3E; };
+		8D60EAEBEBF247838B74CC1E /* BadgeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3890157587F474E844C51AD; };
+		9366B02007E34DAFBDB98447 /* GamificationPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB5A5134E4191A7986435; };
+		32AF8DDCD2714F3182A9C2C2 /* GamificationTotals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DE6A6325E4F198511FCAD; };
+		7B88F0D3354647D987DCC567 /* StreakDailyCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449B3373A6F44C20A9A4EEEA; };
+		CBB14B3568384C68853172DB /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E98F5B35A41BBA4F3C43B; };
+		919006C5CB474B5FB6C33D33 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD7CDECE2D649C7888D6B87; };
+		66A5A3A6DFD4472AAECA8D5E /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0BCBF6538647A0A0E10CE4; };
+		6187C3998BAB4314BFEF74BC /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ECF6C2F6104477857B751C; };
+		C4040657C73D4172B5AB518B /* GeneratedRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE254636F4B4551AECDA8EC; };
+		1E685A92F3514B56B44B7A4A /* LatLon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E253E459C14C7ABE1B8C02; };
+		8BC6422AA6164B67A9DD0093 /* RouteOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E43DB856145C5A7094F65; };
+		CEE70686DB7743419BC960C6 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E597737334BA888DAEAE4; };
+		E8A1FA7B9173443EA354E43B /* WalkGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECE246F514E4EC59D77FCA9; };
+		9367EB54D1D84B45BB56A50F /* WalkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C70FACEBF90426BAD5F8021; };
+		A099A154406A4DE6A15F2C20 /* WalkTrackingPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726A35559CE24322A5738662; };
+		B4C8131090124D8EAD8D3BE1 /* Geodesy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE1307A56FB4B6C9B6F6E15; };
+		AEA58B033187458F837EE59A /* MKDirectionsWalkingDirectionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D00016B57548CBB5780C45; };
+		AEA9525C54DD47C183A78E08 /* MockWalkingDirectionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C807B348BD420F8BE17606; };
+		3F855A86107E45619B9105F0 /* RouteGenerationPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB956E3E72B48798279D177; };
+		2904A7128A0E43ADAA16BA66 /* RoutePatternKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03944E2679B14C9C9BC8D0E9; };
+		F6AB2B1E71AE4302BBC19659 /* RouteScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D48E705F041FCB40AECE3; };
+		670C9DAD5EF54151841EECD9 /* RouteWaypointAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE88ABFF1224A76A5541E3F; };
+		5C2804560604471990EBF509 /* RoutingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD803B2D73E4C598F321C5D; };
+		81F749C18ADE452C9F442EDB /* RoutingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43095715121B4C6895A54241; };
+		1B5056F89A344BEFB018B1CE /* SegmentRouteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F854B5D95745C4B427FCCE; };
+		304ADCDD0815449CA9BB2F59 /* WalkingDirectionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6286EBA2F24373B857E9B5; };
+		850446EE1794410CB1A00213 /* WaypointPatternGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224360DE8454478B20FB120; };
+		8D185AF165DD4B40B6EF0842 /* AchievementEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FACE2632414C4680C1DBF6; };
+		0BD67D09D211412880EAABC0 /* AchievementProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FEADA428C54BFE89C39CB3; };
+		3C58A5198B43425E9932D686 /* LocationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D1F2110A684B15A13BB4D8; };
+		AA8D8838D7EA4EB5A502EC6F /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB92F10B6B466C9F5D4845; };
+		523BB7CD21984DFBB8B7A415 /* RouteGenerationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDD94598B5A4B19A306B43E; };
+		634563C162654768B7EF5FC2 /* RouteGenerationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4BAACB125741C8A242273C; };
+		9986AB997DFE4D54971E33B3 /* StepDistanceEstimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D75641563644FE08F80619C; };
+		F3D6F8DB4A1843D291442287 /* StepDistanceEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E724D0F4156B4E28B89ED3EA; };
+		BB90EA5E0CB44C7C903D3BD4 /* WalkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E838F6240F4143A4B48F9E8C; };
+		25E3B47BF9E24DBB9BFCA9AB /* WalkSessionManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34606E338ED4DAA943BDCC1; };
+		EA1D44190A9540259E1AEBD5 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B1B208BA2445588E28AE9; };
+		FE483BCCFF80467F9678125C /* MapRegion+Fitting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CF0231032F4253AE1C9E92; };
+		4D292117CF4846A8A0211291 /* ASCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF972CFEE5D04CFDB20A221D; };
+		F1A16D6215C64594BA24060E /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6190CE95FD44CDCB6F2C7A5; };
+		25B57305064F41A4A1EC3EDD /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C096A4B4F8C4FF9BB8FF799; };
+		1B27E65F02C347D2A2151BAE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C707C6D4CE6433085D3EB5B; };
+		E7D7B7A23C5948D7B83827A8 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8DCC59E1024E6E99CF6B03; };
+		095463B347D841AEBF163675 /* AchievementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BDD4DAE7E54E938F8D8B87; };
+		ACFBA94083D549AB8A3A827A /* ActiveWalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E134123C4E9433199780271; };
+		84712E05285C408FA6138EF6 /* ActiveWalkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E478740D384654B54607AC; };
+		01F19998FDB24BFD8AD2FC61 /* HomeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE12E743F6D4B18877D6F8A; };
+		544749B288BF4F0CA7099A14 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8149C24D79041B4A48BBEB5; };
+		AB4073434FCB45539759CDCC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B357C1EAD44FA9BD32C034; };
+		1133C1B706504FC3A9B3DACC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0842DC812459CBB03493C; };
+		23945F21755C41D4BB2E8E93 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1D2E7C99DF4E7E9E0DD740; };
+		8B60DBA573E3420F856493A6 /* RoutePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B288C20D6C4C87AA70F647; };
+		D25705CC15774A828944FE83 /* RoutePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FB49141A8A4DB99DABEF35; };
+		BF9E420A60CD4E888737843D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0396C86ED7444828D9DAE1C; };
+		CDDB408954204A998EB2813B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FF206531409F9D6A944B; };
+		E59DB1301AA74D8090B08FE1 /* CelebrationConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C68068FFDC44F586E5851C; };
+		9D6E8154791A40F9AE15CE5C /* WalkCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58510CED0BA64446B8F34EC7; };
+		B0914705F5D24C4EB61247F6 /* WalkCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD19A5F8CC54EE9933E6E7E; };
+		B4123939F26D48EFA198542E /* RouteScoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866670527C24253B4CD9BC2; };
+		0EB629269E934FAEB40AE583 /* StepDistanceEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677404B408DB4E86B91B499D; };
+		E484C3DE192D44729237EBD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D07DCFEF4FB4279AC9960BF; };
 		/* End PBXBuildFile section */
 		/* Begin PBXFileReference section */
-		EF0E618BD0E74B3A804B2E7A /* AverageStepper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AverageStepper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD735EAD09E14445961C8E2D /* AverageStepperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AverageStepperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D49E67D77D8B4B66B93FF5E7 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/AppDependencies.swift"; sourceTree = "<group>"; };
-		DF61F47B6DBB4C159A780B2C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/MainTabView.swift"; sourceTree = "<group>"; };
-		E63737AC6AF34DD894BEA969 /* ResumeWalkNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/ResumeWalkNavigationStack.swift"; sourceTree = "<group>"; };
-		3200B2A477E441D696DD08FB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/RootView.swift"; sourceTree = "<group>"; };
-		600A478E6F9A481DB7750C3D /* AverageStepperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AverageStepperApp.swift"; sourceTree = "<group>"; };
-		1A91A1A290064FA4B8C25DAC /* ActiveWalkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/ActiveWalk/ActiveWalkConfig.swift"; sourceTree = "<group>"; };
-		30A01752108A413A9DA12BB6 /* RoutePolylineGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/ActiveWalk/RoutePolylineGeometry.swift"; sourceTree = "<group>"; };
-		9051BA2FB7834A2EB42BB783 /* WalkSessionPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/ActiveWalk/WalkSessionPersistence.swift"; sourceTree = "<group>"; };
-		0DF18EDE660F4B0AB6654238 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Mock/MockData.swift"; sourceTree = "<group>"; };
-		8E616DD82A54490DBD48E28B /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/Achievement.swift"; sourceTree = "<group>"; };
-		9CDE2198C88F49BD92D75451 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/Badge.swift"; sourceTree = "<group>"; };
-		45A4AE6876E94DA894DA891C /* GeneratedRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/GeneratedRoute.swift"; sourceTree = "<group>"; };
-		5A4F2B5E7B5C44608EB01C80 /* LatLon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/LatLon.swift"; sourceTree = "<group>"; };
-		8C984CBBD22F470595972605 /* RouteOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/RouteOption.swift"; sourceTree = "<group>"; };
-		AFA225CC47354C8B80C258B1 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/UserPreferences.swift"; sourceTree = "<group>"; };
-		9802BC9D7EEE4B1C812FF363 /* WalkGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/WalkGoal.swift"; sourceTree = "<group>"; };
-		18E5F7A434104324894733E6 /* WalkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/WalkSession.swift"; sourceTree = "<group>"; };
-		64BC6E529BE84A1086961167 /* WalkTrackingPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/WalkTrackingPhase.swift"; sourceTree = "<group>"; };
-		FCED747C9D6D41CABAD23218 /* Geodesy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/Geodesy.swift"; sourceTree = "<group>"; };
-		4218A90766104927BDF3A22A /* MKDirectionsWalkingDirectionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/MKDirectionsWalkingDirectionsService.swift"; sourceTree = "<group>"; };
-		FB7BE06822EC4B2BB437F10E /* MockWalkingDirectionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/MockWalkingDirectionsService.swift"; sourceTree = "<group>"; };
-		9DDE4D8F717B4DD8AC925A5D /* RouteGenerationPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RouteGenerationPipeline.swift"; sourceTree = "<group>"; };
-		E9E69EC7B6EA41C98620F9C0 /* RoutePatternKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RoutePatternKind.swift"; sourceTree = "<group>"; };
-		098336FB82B247AABC98D1A6 /* RouteScoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RouteScoring.swift"; sourceTree = "<group>"; };
-		27CF8861D1CA4989857303A8 /* RouteWaypointAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RouteWaypointAssembler.swift"; sourceTree = "<group>"; };
-		48737D01AD664912857C8D84 /* RoutingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RoutingConfig.swift"; sourceTree = "<group>"; };
-		D1B6C668EDF64F36840A4CED /* RoutingLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RoutingLogger.swift"; sourceTree = "<group>"; };
-		DEABA0665B2C4E9A823A4DB6 /* SegmentRouteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/SegmentRouteResult.swift"; sourceTree = "<group>"; };
-		A1C2DC5F8F4F4F78A9FC5F2F /* WalkingDirectionsProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/WalkingDirectionsProviding.swift"; sourceTree = "<group>"; };
-		8D87B2A403F14DD78C18B6EE /* WaypointPatternGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/WaypointPatternGenerator.swift"; sourceTree = "<group>"; };
-		4651F88FDF08481A8953616C /* AchievementEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/AchievementEngine.swift"; sourceTree = "<group>"; };
-		528784858D17484DABD02925 /* AchievementProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/AchievementProviding.swift"; sourceTree = "<group>"; };
-		64531BA7A534497CA6B718F1 /* LocationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/LocationProviding.swift"; sourceTree = "<group>"; };
-		3ECD9321F4FF4613AEB77B44 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/LocationService.swift"; sourceTree = "<group>"; };
-		5DB207920EF34D878A2E00E1 /* RouteGenerationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/RouteGenerationProviding.swift"; sourceTree = "<group>"; };
-		6B84247CC1484E56AC2C0C7D /* RouteGenerationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/RouteGenerationService.swift"; sourceTree = "<group>"; };
-		F281B8CD274149FFAE6FFEAE /* StepDistanceEstimating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/StepDistanceEstimating.swift"; sourceTree = "<group>"; };
-		EB54DD938C1C43D7AEE6E242 /* StepDistanceEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/StepDistanceEstimator.swift"; sourceTree = "<group>"; };
-		394758EEA8DC44EC9956B027 /* WalkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/WalkSessionManager.swift"; sourceTree = "<group>"; };
-		DC19D50BAEC245DDBD88E579 /* WalkSessionManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/WalkSessionManaging.swift"; sourceTree = "<group>"; };
-		A887BDF83B0542F79A843C80 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Utilities/Formatting.swift"; sourceTree = "<group>"; };
-		85549FB8ACAC4E1FA0E1FD18 /* MapRegion+Fitting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Utilities/MapRegion+Fitting.swift"; sourceTree = "<group>"; };
-		A220B6B230FB4AD1ACD82FAF /* ASCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem/ASCard.swift"; sourceTree = "<group>"; };
-		F3C31C3FFB2C4A8CA991C3EE /* MetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem/MetricCard.swift"; sourceTree = "<group>"; };
-		14981115AF8A405DBD2A1D80 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem/PrimaryButton.swift"; sourceTree = "<group>"; };
-		9CDF91B1C5B74F78A4556566 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem/Theme.swift"; sourceTree = "<group>"; };
-		98B0563D3A8B4DE09020C19F /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Achievements/AchievementsView.swift"; sourceTree = "<group>"; };
-		91B7F1EE806D47838A1B7DF0 /* AchievementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Achievements/AchievementsViewModel.swift"; sourceTree = "<group>"; };
-		5C217E66D76A4D3298DD012A /* ActiveWalkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/ActiveWalk/ActiveWalkView.swift"; sourceTree = "<group>"; };
-		449850397D53461AAA34113F /* ActiveWalkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/ActiveWalk/ActiveWalkViewModel.swift"; sourceTree = "<group>"; };
-		42D515CC11C1461181E7086E /* HomeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Home/HomeStack.swift"; sourceTree = "<group>"; };
-		9CCE1C31C0CE414F87EC3835 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Home/HomeView.swift"; sourceTree = "<group>"; };
-		048FC9B63F3C458F83C88673 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Home/HomeViewModel.swift"; sourceTree = "<group>"; };
-		9133A754EC884E7EA9290808 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Onboarding/OnboardingView.swift"; sourceTree = "<group>"; };
-		4DBBD676EAB144E4B38837A2 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Onboarding/OnboardingViewModel.swift"; sourceTree = "<group>"; };
-		A122E39B636A4C92806C843A /* RoutePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/RoutePreview/RoutePreviewView.swift"; sourceTree = "<group>"; };
-		BA5DA9C76AF14B47BA122D93 /* RoutePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/RoutePreview/RoutePreviewViewModel.swift"; sourceTree = "<group>"; };
-		13C806AAE1AF4CCC87C08210 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Settings/SettingsView.swift"; sourceTree = "<group>"; };
-		70C654542F554CD192CEB337 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Settings/SettingsViewModel.swift"; sourceTree = "<group>"; };
-		F17DD1A4D714456D99A0E847 /* WalkCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/WalkComplete/WalkCompleteView.swift"; sourceTree = "<group>"; };
-		029F7F699EA041F5A0E65B6D /* WalkCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/WalkComplete/WalkCompleteViewModel.swift"; sourceTree = "<group>"; };
-		72A0EBADA4D64C0C8784F112 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2B5A175ADEF34A069F1200AB /* RouteScoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteScoringTests.swift"; sourceTree = "<group>"; };
-		4F2AB7ABE17348B78E329013 /* StepDistanceEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StepDistanceEstimatorTests.swift"; sourceTree = "<group>"; };
+		01F1722F320848789C77D25C /* AverageStepper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AverageStepper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F93B602CCC8243C4B1B15367 /* AverageStepperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AverageStepperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62EA9EE052FB47ED8F142C17 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/AppDependencies.swift"; sourceTree = "<group>"; };
+		5F1667F7F0B145198D905729 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/MainTabView.swift"; sourceTree = "<group>"; };
+		F4BDB1E75C324E758D25AE95 /* ResumeWalkNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/ResumeWalkNavigationStack.swift"; sourceTree = "<group>"; };
+		A5EBE36EC57845C38E4E584D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/RootView.swift"; sourceTree = "<group>"; };
+		DA71BE3DE01D459AA9A1F74B /* AverageStepperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AverageStepperApp.swift"; sourceTree = "<group>"; };
+		0F0242B95106433B8CCFB15F /* ActiveWalkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/ActiveWalk/ActiveWalkConfig.swift"; sourceTree = "<group>"; };
+		9F5BD8CD9A384F35ADCAEB3F /* RoutePolylineGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/ActiveWalk/RoutePolylineGeometry.swift"; sourceTree = "<group>"; };
+		F730FAF67A63489EA19A1837 /* WalkSessionPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/ActiveWalk/WalkSessionPersistence.swift"; sourceTree = "<group>"; };
+		196099DBE9C74761A9A6CB79 /* AchievementRuleEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Gamification/AchievementRuleEvaluator.swift"; sourceTree = "<group>"; };
+		4E10B9A0DEA843CEA27B5C3E /* BadgeCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Gamification/BadgeCatalog.swift"; sourceTree = "<group>"; };
+		E3890157587F474E844C51AD /* BadgeRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Gamification/BadgeRule.swift"; sourceTree = "<group>"; };
+		63BDB5A5134E4191A7986435 /* GamificationPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Gamification/GamificationPersistence.swift"; sourceTree = "<group>"; };
+		939DE6A6325E4F198511FCAD /* GamificationTotals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Gamification/GamificationTotals.swift"; sourceTree = "<group>"; };
+		449B3373A6F44C20A9A4EEEA /* StreakDailyCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Gamification/StreakDailyCheck.swift"; sourceTree = "<group>"; };
+		9E5E98F5B35A41BBA4F3C43B /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Gamification/StreakManager.swift"; sourceTree = "<group>"; };
+		EFD7CDECE2D649C7888D6B87 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Mock/MockData.swift"; sourceTree = "<group>"; };
+		EE0BCBF6538647A0A0E10CE4 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/Achievement.swift"; sourceTree = "<group>"; };
+		67ECF6C2F6104477857B751C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/Badge.swift"; sourceTree = "<group>"; };
+		1CE254636F4B4551AECDA8EC /* GeneratedRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/GeneratedRoute.swift"; sourceTree = "<group>"; };
+		C3E253E459C14C7ABE1B8C02 /* LatLon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/LatLon.swift"; sourceTree = "<group>"; };
+		AD5E43DB856145C5A7094F65 /* RouteOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/RouteOption.swift"; sourceTree = "<group>"; };
+		9D7E597737334BA888DAEAE4 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/UserPreferences.swift"; sourceTree = "<group>"; };
+		8ECE246F514E4EC59D77FCA9 /* WalkGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/WalkGoal.swift"; sourceTree = "<group>"; };
+		3C70FACEBF90426BAD5F8021 /* WalkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/WalkSession.swift"; sourceTree = "<group>"; };
+		726A35559CE24322A5738662 /* WalkTrackingPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Models/WalkTrackingPhase.swift"; sourceTree = "<group>"; };
+		8BE1307A56FB4B6C9B6F6E15 /* Geodesy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/Geodesy.swift"; sourceTree = "<group>"; };
+		93D00016B57548CBB5780C45 /* MKDirectionsWalkingDirectionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/MKDirectionsWalkingDirectionsService.swift"; sourceTree = "<group>"; };
+		29C807B348BD420F8BE17606 /* MockWalkingDirectionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/MockWalkingDirectionsService.swift"; sourceTree = "<group>"; };
+		BDB956E3E72B48798279D177 /* RouteGenerationPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RouteGenerationPipeline.swift"; sourceTree = "<group>"; };
+		03944E2679B14C9C9BC8D0E9 /* RoutePatternKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RoutePatternKind.swift"; sourceTree = "<group>"; };
+		010D48E705F041FCB40AECE3 /* RouteScoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RouteScoring.swift"; sourceTree = "<group>"; };
+		6AE88ABFF1224A76A5541E3F /* RouteWaypointAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RouteWaypointAssembler.swift"; sourceTree = "<group>"; };
+		9DD803B2D73E4C598F321C5D /* RoutingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RoutingConfig.swift"; sourceTree = "<group>"; };
+		43095715121B4C6895A54241 /* RoutingLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/RoutingLogger.swift"; sourceTree = "<group>"; };
+		C5F854B5D95745C4B427FCCE /* SegmentRouteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/SegmentRouteResult.swift"; sourceTree = "<group>"; };
+		3B6286EBA2F24373B857E9B5 /* WalkingDirectionsProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/WalkingDirectionsProviding.swift"; sourceTree = "<group>"; };
+		3224360DE8454478B20FB120 /* WaypointPatternGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Routing/WaypointPatternGenerator.swift"; sourceTree = "<group>"; };
+		03FACE2632414C4680C1DBF6 /* AchievementEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/AchievementEngine.swift"; sourceTree = "<group>"; };
+		66FEADA428C54BFE89C39CB3 /* AchievementProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/AchievementProviding.swift"; sourceTree = "<group>"; };
+		58D1F2110A684B15A13BB4D8 /* LocationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/LocationProviding.swift"; sourceTree = "<group>"; };
+		D1FB92F10B6B466C9F5D4845 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/LocationService.swift"; sourceTree = "<group>"; };
+		BCDD94598B5A4B19A306B43E /* RouteGenerationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/RouteGenerationProviding.swift"; sourceTree = "<group>"; };
+		4D4BAACB125741C8A242273C /* RouteGenerationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/RouteGenerationService.swift"; sourceTree = "<group>"; };
+		2D75641563644FE08F80619C /* StepDistanceEstimating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/StepDistanceEstimating.swift"; sourceTree = "<group>"; };
+		E724D0F4156B4E28B89ED3EA /* StepDistanceEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/StepDistanceEstimator.swift"; sourceTree = "<group>"; };
+		E838F6240F4143A4B48F9E8C /* WalkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/WalkSessionManager.swift"; sourceTree = "<group>"; };
+		E34606E338ED4DAA943BDCC1 /* WalkSessionManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Services/WalkSessionManaging.swift"; sourceTree = "<group>"; };
+		881B1B208BA2445588E28AE9 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Utilities/Formatting.swift"; sourceTree = "<group>"; };
+		64CF0231032F4253AE1C9E92 /* MapRegion+Fitting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Utilities/MapRegion+Fitting.swift"; sourceTree = "<group>"; };
+		AF972CFEE5D04CFDB20A221D /* ASCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem/ASCard.swift"; sourceTree = "<group>"; };
+		E6190CE95FD44CDCB6F2C7A5 /* MetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem/MetricCard.swift"; sourceTree = "<group>"; };
+		0C096A4B4F8C4FF9BB8FF799 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem/PrimaryButton.swift"; sourceTree = "<group>"; };
+		9C707C6D4CE6433085D3EB5B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem/Theme.swift"; sourceTree = "<group>"; };
+		FF8DCC59E1024E6E99CF6B03 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Achievements/AchievementsView.swift"; sourceTree = "<group>"; };
+		54BDD4DAE7E54E938F8D8B87 /* AchievementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Achievements/AchievementsViewModel.swift"; sourceTree = "<group>"; };
+		4E134123C4E9433199780271 /* ActiveWalkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/ActiveWalk/ActiveWalkView.swift"; sourceTree = "<group>"; };
+		84E478740D384654B54607AC /* ActiveWalkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/ActiveWalk/ActiveWalkViewModel.swift"; sourceTree = "<group>"; };
+		7FE12E743F6D4B18877D6F8A /* HomeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Home/HomeStack.swift"; sourceTree = "<group>"; };
+		D8149C24D79041B4A48BBEB5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Home/HomeView.swift"; sourceTree = "<group>"; };
+		86B357C1EAD44FA9BD32C034 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Home/HomeViewModel.swift"; sourceTree = "<group>"; };
+		2BB0842DC812459CBB03493C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Onboarding/OnboardingView.swift"; sourceTree = "<group>"; };
+		5D1D2E7C99DF4E7E9E0DD740 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Onboarding/OnboardingViewModel.swift"; sourceTree = "<group>"; };
+		39B288C20D6C4C87AA70F647 /* RoutePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/RoutePreview/RoutePreviewView.swift"; sourceTree = "<group>"; };
+		C7FB49141A8A4DB99DABEF35 /* RoutePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/RoutePreview/RoutePreviewViewModel.swift"; sourceTree = "<group>"; };
+		D0396C86ED7444828D9DAE1C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Settings/SettingsView.swift"; sourceTree = "<group>"; };
+		9928FF206531409F9D6A944B /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Settings/SettingsViewModel.swift"; sourceTree = "<group>"; };
+		67C68068FFDC44F586E5851C /* CelebrationConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/WalkComplete/CelebrationConfettiView.swift"; sourceTree = "<group>"; };
+		58510CED0BA64446B8F34EC7 /* WalkCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/WalkComplete/WalkCompleteView.swift"; sourceTree = "<group>"; };
+		ECD19A5F8CC54EE9933E6E7E /* WalkCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/WalkComplete/WalkCompleteViewModel.swift"; sourceTree = "<group>"; };
+		5D07DCFEF4FB4279AC9960BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4866670527C24253B4CD9BC2 /* RouteScoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteScoringTests.swift"; sourceTree = "<group>"; };
+		677404B408DB4E86B91B499D /* StepDistanceEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StepDistanceEstimatorTests.swift"; sourceTree = "<group>"; };
 		/* End PBXFileReference section */
 		/* Begin PBXFrameworksBuildPhase section */
-		71A35C1A607C4AA9BCC0F101 /* Frameworks */ = {
+		E5A0072E13104FB5A9FEFAE7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = ();
@@ -147,171 +163,179 @@
 		};
 		/* End PBXFrameworksBuildPhase section */
 		/* Begin PBXGroup section */
-		850771ADF1CA4FF4B80D2CE0 = {
+		536E3FD112324A428DE2C42E = {
 			isa = PBXGroup;
 			children = (
-				0C400F99E4A3461BAAC7F14C /* AverageStepper */,
-				3A5DD403056B4561B2976639 /* AverageStepperTests */,
-				3C3CB73D7B86411E9B1D54CC /* Products */,
+				AF7C62AEA0B8478890DA9C23 /* AverageStepper */,
+				52672CD88C18462D8F6D0193 /* AverageStepperTests */,
+				0395661BE0D247B88AED87AB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3C3CB73D7B86411E9B1D54CC = {
+		0395661BE0D247B88AED87AB = {
 			isa = PBXGroup;
 			children = (
-				EF0E618BD0E74B3A804B2E7A /* AverageStepper.app */,
-				DD735EAD09E14445961C8E2D /* AverageStepperTests.xctest */,
+				01F1722F320848789C77D25C /* AverageStepper.app */,
+				F93B602CCC8243C4B1B15367 /* AverageStepperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FEB3D77092C3452189406B5B = {
+		A1EFAE0B6ED345B7B20EBFB8 = {
 			isa = PBXGroup;
 			children = (
-				72A0EBADA4D64C0C8784F112 /* Assets.xcassets */,
+				5D07DCFEF4FB4279AC9960BF /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		0C400F99E4A3461BAAC7F14C = {
+		AF7C62AEA0B8478890DA9C23 = {
 			isa = PBXGroup;
 			children = (
-				D49E67D77D8B4B66B93FF5E7,
-				DF61F47B6DBB4C159A780B2C,
-				E63737AC6AF34DD894BEA969,
-				3200B2A477E441D696DD08FB,
-				600A478E6F9A481DB7750C3D,
-				1A91A1A290064FA4B8C25DAC,
-				30A01752108A413A9DA12BB6,
-				9051BA2FB7834A2EB42BB783,
-				0DF18EDE660F4B0AB6654238,
-				8E616DD82A54490DBD48E28B,
-				9CDE2198C88F49BD92D75451,
-				45A4AE6876E94DA894DA891C,
-				5A4F2B5E7B5C44608EB01C80,
-				8C984CBBD22F470595972605,
-				AFA225CC47354C8B80C258B1,
-				9802BC9D7EEE4B1C812FF363,
-				18E5F7A434104324894733E6,
-				64BC6E529BE84A1086961167,
-				FCED747C9D6D41CABAD23218,
-				4218A90766104927BDF3A22A,
-				FB7BE06822EC4B2BB437F10E,
-				9DDE4D8F717B4DD8AC925A5D,
-				E9E69EC7B6EA41C98620F9C0,
-				098336FB82B247AABC98D1A6,
-				27CF8861D1CA4989857303A8,
-				48737D01AD664912857C8D84,
-				D1B6C668EDF64F36840A4CED,
-				DEABA0665B2C4E9A823A4DB6,
-				A1C2DC5F8F4F4F78A9FC5F2F,
-				8D87B2A403F14DD78C18B6EE,
-				4651F88FDF08481A8953616C,
-				528784858D17484DABD02925,
-				64531BA7A534497CA6B718F1,
-				3ECD9321F4FF4613AEB77B44,
-				5DB207920EF34D878A2E00E1,
-				6B84247CC1484E56AC2C0C7D,
-				F281B8CD274149FFAE6FFEAE,
-				EB54DD938C1C43D7AEE6E242,
-				394758EEA8DC44EC9956B027,
-				DC19D50BAEC245DDBD88E579,
-				A887BDF83B0542F79A843C80,
-				85549FB8ACAC4E1FA0E1FD18,
-				A220B6B230FB4AD1ACD82FAF,
-				F3C31C3FFB2C4A8CA991C3EE,
-				14981115AF8A405DBD2A1D80,
-				9CDF91B1C5B74F78A4556566,
-				98B0563D3A8B4DE09020C19F,
-				91B7F1EE806D47838A1B7DF0,
-				5C217E66D76A4D3298DD012A,
-				449850397D53461AAA34113F,
-				42D515CC11C1461181E7086E,
-				9CCE1C31C0CE414F87EC3835,
-				048FC9B63F3C458F83C88673,
-				9133A754EC884E7EA9290808,
-				4DBBD676EAB144E4B38837A2,
-				A122E39B636A4C92806C843A,
-				BA5DA9C76AF14B47BA122D93,
-				13C806AAE1AF4CCC87C08210,
-				70C654542F554CD192CEB337,
-				F17DD1A4D714456D99A0E847,
-				029F7F699EA041F5A0E65B6D,
-				FEB3D77092C3452189406B5B /* Resources */,
+				62EA9EE052FB47ED8F142C17,
+				5F1667F7F0B145198D905729,
+				F4BDB1E75C324E758D25AE95,
+				A5EBE36EC57845C38E4E584D,
+				DA71BE3DE01D459AA9A1F74B,
+				0F0242B95106433B8CCFB15F,
+				9F5BD8CD9A384F35ADCAEB3F,
+				F730FAF67A63489EA19A1837,
+				196099DBE9C74761A9A6CB79,
+				4E10B9A0DEA843CEA27B5C3E,
+				E3890157587F474E844C51AD,
+				63BDB5A5134E4191A7986435,
+				939DE6A6325E4F198511FCAD,
+				449B3373A6F44C20A9A4EEEA,
+				9E5E98F5B35A41BBA4F3C43B,
+				EFD7CDECE2D649C7888D6B87,
+				EE0BCBF6538647A0A0E10CE4,
+				67ECF6C2F6104477857B751C,
+				1CE254636F4B4551AECDA8EC,
+				C3E253E459C14C7ABE1B8C02,
+				AD5E43DB856145C5A7094F65,
+				9D7E597737334BA888DAEAE4,
+				8ECE246F514E4EC59D77FCA9,
+				3C70FACEBF90426BAD5F8021,
+				726A35559CE24322A5738662,
+				8BE1307A56FB4B6C9B6F6E15,
+				93D00016B57548CBB5780C45,
+				29C807B348BD420F8BE17606,
+				BDB956E3E72B48798279D177,
+				03944E2679B14C9C9BC8D0E9,
+				010D48E705F041FCB40AECE3,
+				6AE88ABFF1224A76A5541E3F,
+				9DD803B2D73E4C598F321C5D,
+				43095715121B4C6895A54241,
+				C5F854B5D95745C4B427FCCE,
+				3B6286EBA2F24373B857E9B5,
+				3224360DE8454478B20FB120,
+				03FACE2632414C4680C1DBF6,
+				66FEADA428C54BFE89C39CB3,
+				58D1F2110A684B15A13BB4D8,
+				D1FB92F10B6B466C9F5D4845,
+				BCDD94598B5A4B19A306B43E,
+				4D4BAACB125741C8A242273C,
+				2D75641563644FE08F80619C,
+				E724D0F4156B4E28B89ED3EA,
+				E838F6240F4143A4B48F9E8C,
+				E34606E338ED4DAA943BDCC1,
+				881B1B208BA2445588E28AE9,
+				64CF0231032F4253AE1C9E92,
+				AF972CFEE5D04CFDB20A221D,
+				E6190CE95FD44CDCB6F2C7A5,
+				0C096A4B4F8C4FF9BB8FF799,
+				9C707C6D4CE6433085D3EB5B,
+				FF8DCC59E1024E6E99CF6B03,
+				54BDD4DAE7E54E938F8D8B87,
+				4E134123C4E9433199780271,
+				84E478740D384654B54607AC,
+				7FE12E743F6D4B18877D6F8A,
+				D8149C24D79041B4A48BBEB5,
+				86B357C1EAD44FA9BD32C034,
+				2BB0842DC812459CBB03493C,
+				5D1D2E7C99DF4E7E9E0DD740,
+				39B288C20D6C4C87AA70F647,
+				C7FB49141A8A4DB99DABEF35,
+				D0396C86ED7444828D9DAE1C,
+				9928FF206531409F9D6A944B,
+				67C68068FFDC44F586E5851C,
+				58510CED0BA64446B8F34EC7,
+				ECD19A5F8CC54EE9933E6E7E,
+				A1EFAE0B6ED345B7B20EBFB8 /* Resources */,
 			);
 			path = AverageStepper;
 			sourceTree = "<group>";
 		};
-		3A5DD403056B4561B2976639 = {
+		52672CD88C18462D8F6D0193 = {
 			isa = PBXGroup;
 			children = (
-				2B5A175ADEF34A069F1200AB,
-				4F2AB7ABE17348B78E329013,
+				4866670527C24253B4CD9BC2,
+				677404B408DB4E86B91B499D,
 			);
 			path = AverageStepperTests;
 			sourceTree = "<group>";
 		};
 		/* End PBXGroup section */
 		/* Begin PBXNativeTarget section */
-		D2A9D8AA64DE4A9095AD3E02 /* AverageStepper */ = {
+		90C00C46450E40AC840E751B /* AverageStepper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A97B51CDA344242A1DCB3F8 /* Build configuration list for PBXNativeTarget "AverageStepper" */;
+			buildConfigurationList = F2B627F0E4B5408A9210EEDA /* Build configuration list for PBXNativeTarget "AverageStepper" */;
 			buildPhases = (
-				9F0CA578EB45485BA442DDDD /* Sources */,
-				71A35C1A607C4AA9BCC0F101 /* Frameworks */,
-				D5F513BE6B024B2392534E8D /* Resources */,
+				DEFC097DDF1E4FAE97249947 /* Sources */,
+				E5A0072E13104FB5A9FEFAE7 /* Frameworks */,
+				C4AD6C204A3343C08F7554D9 /* Resources */,
 			);
 			buildRules = ();
 			dependencies = ();
 			name = AverageStepper;
 			productName = AverageStepper;
-			productReference = EF0E618BD0E74B3A804B2E7A /* AverageStepper.app */;
+			productReference = 01F1722F320848789C77D25C /* AverageStepper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B562D6CF43A3484DA40C0B89 /* PBXContainerItemProxy */ = {
+		9AA6698F3F974AC4ABBCF941 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E5C908EC26D34083B1B59CF5 /* Project object */;
+			containerPortal = A9187DF893294AF3A9C03D7A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D2A9D8AA64DE4A9095AD3E02;
+			remoteGlobalIDString = 90C00C46450E40AC840E751B;
 			remoteInfo = AverageStepper;
 		};
-		5186AD2DB85149239D4458DB /* PBXTargetDependency */ = {
+		2E02383B72D54D1087464FCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D2A9D8AA64DE4A9095AD3E02 /* AverageStepper */;
-			targetProxy = B562D6CF43A3484DA40C0B89 /* PBXContainerItemProxy */;
+			target = 90C00C46450E40AC840E751B /* AverageStepper */;
+			targetProxy = 9AA6698F3F974AC4ABBCF941 /* PBXContainerItemProxy */;
 		};
-		81C28F3B7DE84FC2A40C17AE /* AverageStepperTests */ = {
+		21F091D548674EC9B03E0A56 /* AverageStepperTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 35B924A5D2A247A6A55ACDBD /* Build configuration list for PBXNativeTarget "AverageStepperTests" */;
+			buildConfigurationList = 5BFC16B8AC174DCE9D07E5DF /* Build configuration list for PBXNativeTarget "AverageStepperTests" */;
 			buildPhases = (
-				F4F593F8771E439DA6C78883 /* Sources */,
-				80FA7227D3DB49058743997E /* Frameworks */,
+				CD9D60E68CDD4E718FE851E1 /* Sources */,
+				4BC1CF2AB3284FA9B0DC67CD /* Frameworks */,
 			);
 			buildRules = ();
 			dependencies = (
-				5186AD2DB85149239D4458DB /* PBXTargetDependency */,
+				2E02383B72D54D1087464FCB /* PBXTargetDependency */,
 			);
 			name = AverageStepperTests;
 			productName = AverageStepperTests;
-			productReference = DD735EAD09E14445961C8E2D /* AverageStepperTests.xctest */;
+			productReference = F93B602CCC8243C4B1B15367 /* AverageStepperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		/* End PBXNativeTarget section */
 		/* Begin PBXProject section */
-		E5C908EC26D34083B1B59CF5 /* Project object */ = {
+		A9187DF893294AF3A9C03D7A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {{
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {{
-					D2A9D8AA64DE4A9095AD3E02 = {
+					90C00C46450E40AC840E751B = {
 						CreatedOnToolsVersion = 15.0;
 						ProvisioningStyle = Automatic;
 					}};
 				}};
 			}};
-			buildConfigurationList = 89662033E2074CFE9E87E802 /* Build configuration list for PBXProject "AverageStepper" */;
+			buildConfigurationList = 0AA7022D0E674B4A958AE98A /* Build configuration list for PBXProject "AverageStepper" */;
 			compatibilityVersion = "Xcode 16.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -319,98 +343,106 @@
 				en,
 				Base,
 			);
-			mainGroup = 850771ADF1CA4FF4B80D2CE0;
-			productRefGroup = 3C3CB73D7B86411E9B1D54CC /* Products */;
+			mainGroup = 536E3FD112324A428DE2C42E;
+			productRefGroup = 0395661BE0D247B88AED87AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D2A9D8AA64DE4A9095AD3E02 /* AverageStepper */,
-				81C28F3B7DE84FC2A40C17AE /* AverageStepperTests */,
+				90C00C46450E40AC840E751B /* AverageStepper */,
+				21F091D548674EC9B03E0A56 /* AverageStepperTests */,
 			);
 		};
 		/* End PBXProject section */
 		/* Begin PBXResourcesBuildPhase section */
-		D5F513BE6B024B2392534E8D /* Resources */ = {
+		C4AD6C204A3343C08F7554D9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B3B87F42EDA4543B042505C /* Assets.xcassets in Resources */,
+				E484C3DE192D44729237EBD0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		/* End PBXResourcesBuildPhase section */
 		/* Begin PBXSourcesBuildPhase section */
-		9F0CA578EB45485BA442DDDD /* Sources */ = {
+		DEFC097DDF1E4FAE97249947 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				600B4689734A484B9A1A0CED /* AppDependencies.swift in Sources */,
-				2C8BDD67C89B44398979D29F /* MainTabView.swift in Sources */,
-				10340895A24F49AFA04FE115 /* ResumeWalkNavigationStack.swift in Sources */,
-				55F78C73DD1E4741AAE356B9 /* RootView.swift in Sources */,
-				9FC39B5E4B9540D5B8532EE7 /* AverageStepperApp.swift in Sources */,
-				15B057B0118E4DB9BAC2B9C0 /* ActiveWalkConfig.swift in Sources */,
-				CFF000F2C8B845B79F55CCD8 /* RoutePolylineGeometry.swift in Sources */,
-				A315172328EE49888918B54D /* WalkSessionPersistence.swift in Sources */,
-				665F48E91A184C3ABAD7C5AD /* MockData.swift in Sources */,
-				C24304E88D384A30A2C4C5B9 /* Achievement.swift in Sources */,
-				FC83C6FA16A347BCBE8BD0D0 /* Badge.swift in Sources */,
-				16186F5CD20746599214862A /* GeneratedRoute.swift in Sources */,
-				5C05B83553ED4D828D5E33A0 /* LatLon.swift in Sources */,
-				F2A7F5223677430091E73F29 /* RouteOption.swift in Sources */,
-				95872D411D764CFEBD2B17A3 /* UserPreferences.swift in Sources */,
-				9EEF44BDC11D4C31A22D4D2E /* WalkGoal.swift in Sources */,
-				44E8BFD337C34C47815310CA /* WalkSession.swift in Sources */,
-				CB55FA7008CF442EB2F7D7C5 /* WalkTrackingPhase.swift in Sources */,
-				02D47CD56E9747BFB83854DC /* Geodesy.swift in Sources */,
-				C00C05492DDF423C823B3453 /* MKDirectionsWalkingDirectionsService.swift in Sources */,
-				CFBB30EFAF914D7188C2B2B3 /* MockWalkingDirectionsService.swift in Sources */,
-				7DFA4733515448BAA8BC6D1B /* RouteGenerationPipeline.swift in Sources */,
-				97A5E6F529704C58BAB0F265 /* RoutePatternKind.swift in Sources */,
-				0128ACB9A9A342B68A824E45 /* RouteScoring.swift in Sources */,
-				3081C2692C214AE7A4BA24D6 /* RouteWaypointAssembler.swift in Sources */,
-				4E8E35E36B4645C1AC347F6B /* RoutingConfig.swift in Sources */,
-				A1FBBB2215E34F78B5428F58 /* RoutingLogger.swift in Sources */,
-				EF48B8B786A246E790EC89AC /* SegmentRouteResult.swift in Sources */,
-				37BC2AB864E849EA917C60D6 /* WalkingDirectionsProviding.swift in Sources */,
-				B65C36E847044455A2702199 /* WaypointPatternGenerator.swift in Sources */,
-				CBFFCD8EE94A4D13AEB6B99E /* AchievementEngine.swift in Sources */,
-				9072D963768B47C6A2FBFF97 /* AchievementProviding.swift in Sources */,
-				73EFC5B72D24447D94C75C8C /* LocationProviding.swift in Sources */,
-				6856CDB67E524CD7813A7831 /* LocationService.swift in Sources */,
-				0627989B7CF744C7AA8B87D3 /* RouteGenerationProviding.swift in Sources */,
-				4F68611B1DF64D8F93F994B2 /* RouteGenerationService.swift in Sources */,
-				132E027D9C134823A0F3500D /* StepDistanceEstimating.swift in Sources */,
-				30EA5A04328E49A2BC230C5F /* StepDistanceEstimator.swift in Sources */,
-				263B584F68F6409A9024A7E5 /* WalkSessionManager.swift in Sources */,
-				57B365A85DCF45E198B31BE8 /* WalkSessionManaging.swift in Sources */,
-				17C98F3A893D411D8C42CE23 /* Formatting.swift in Sources */,
-				7E5A142061504E8C842B5A0A /* MapRegion+Fitting.swift in Sources */,
-				71AE9F4FC38547038B4CD025 /* ASCard.swift in Sources */,
-				F2F93585FFFD494A926DB8D4 /* MetricCard.swift in Sources */,
-				B76583E73A8A485A844EDE29 /* PrimaryButton.swift in Sources */,
-				4D508CB415B24D2680CF16E0 /* Theme.swift in Sources */,
-				5947B928493B492CBE9FE321 /* AchievementsView.swift in Sources */,
-				663696D6A0B7420FB4062277 /* AchievementsViewModel.swift in Sources */,
-				36176F4CF6504D99829141F2 /* ActiveWalkView.swift in Sources */,
-				25962D16285B46149D7E94B8 /* ActiveWalkViewModel.swift in Sources */,
-				78127CEB640B404F9B771502 /* HomeStack.swift in Sources */,
-				483D74F97E214DC1B61F5705 /* HomeView.swift in Sources */,
-				4DEA0924E5FB4050A14D22D3 /* HomeViewModel.swift in Sources */,
-				C77BDF6ED2334A219419B858 /* OnboardingView.swift in Sources */,
-				FE277DDAA8B1459DBD428454 /* OnboardingViewModel.swift in Sources */,
-				35BF6A024777442FAA22330D /* RoutePreviewView.swift in Sources */,
-				D64D319B9262484998957C7F /* RoutePreviewViewModel.swift in Sources */,
-				C52E0C639D9C4045AC591693 /* SettingsView.swift in Sources */,
-				638617625F984CC48AEF0B43 /* SettingsViewModel.swift in Sources */,
-				E6166424EF394E7CA4541C39 /* WalkCompleteView.swift in Sources */,
-				234F016D9CA645E6A9CB07FF /* WalkCompleteViewModel.swift in Sources */,
+				2A345479EAD54A78A9E98567 /* AppDependencies.swift in Sources */,
+				3601C5AE8BBE4683A6166E36 /* MainTabView.swift in Sources */,
+				33C29EAE47364C6DA790F210 /* ResumeWalkNavigationStack.swift in Sources */,
+				8097FEF249814D0BBE83DF21 /* RootView.swift in Sources */,
+				DE164E9D453E40E0923C4DFB /* AverageStepperApp.swift in Sources */,
+				919FF15F9AA341629A817C70 /* ActiveWalkConfig.swift in Sources */,
+				944342EB1E1E418B95589010 /* RoutePolylineGeometry.swift in Sources */,
+				4E34B3FF656542E4942F803A /* WalkSessionPersistence.swift in Sources */,
+				F0F937CF51FB4934A0068BBA /* AchievementRuleEvaluator.swift in Sources */,
+				8E74B009426D40F69E434FB8 /* BadgeCatalog.swift in Sources */,
+				8D60EAEBEBF247838B74CC1E /* BadgeRule.swift in Sources */,
+				9366B02007E34DAFBDB98447 /* GamificationPersistence.swift in Sources */,
+				32AF8DDCD2714F3182A9C2C2 /* GamificationTotals.swift in Sources */,
+				7B88F0D3354647D987DCC567 /* StreakDailyCheck.swift in Sources */,
+				CBB14B3568384C68853172DB /* StreakManager.swift in Sources */,
+				919006C5CB474B5FB6C33D33 /* MockData.swift in Sources */,
+				66A5A3A6DFD4472AAECA8D5E /* Achievement.swift in Sources */,
+				6187C3998BAB4314BFEF74BC /* Badge.swift in Sources */,
+				C4040657C73D4172B5AB518B /* GeneratedRoute.swift in Sources */,
+				1E685A92F3514B56B44B7A4A /* LatLon.swift in Sources */,
+				8BC6422AA6164B67A9DD0093 /* RouteOption.swift in Sources */,
+				CEE70686DB7743419BC960C6 /* UserPreferences.swift in Sources */,
+				E8A1FA7B9173443EA354E43B /* WalkGoal.swift in Sources */,
+				9367EB54D1D84B45BB56A50F /* WalkSession.swift in Sources */,
+				A099A154406A4DE6A15F2C20 /* WalkTrackingPhase.swift in Sources */,
+				B4C8131090124D8EAD8D3BE1 /* Geodesy.swift in Sources */,
+				AEA58B033187458F837EE59A /* MKDirectionsWalkingDirectionsService.swift in Sources */,
+				AEA9525C54DD47C183A78E08 /* MockWalkingDirectionsService.swift in Sources */,
+				3F855A86107E45619B9105F0 /* RouteGenerationPipeline.swift in Sources */,
+				2904A7128A0E43ADAA16BA66 /* RoutePatternKind.swift in Sources */,
+				F6AB2B1E71AE4302BBC19659 /* RouteScoring.swift in Sources */,
+				670C9DAD5EF54151841EECD9 /* RouteWaypointAssembler.swift in Sources */,
+				5C2804560604471990EBF509 /* RoutingConfig.swift in Sources */,
+				81F749C18ADE452C9F442EDB /* RoutingLogger.swift in Sources */,
+				1B5056F89A344BEFB018B1CE /* SegmentRouteResult.swift in Sources */,
+				304ADCDD0815449CA9BB2F59 /* WalkingDirectionsProviding.swift in Sources */,
+				850446EE1794410CB1A00213 /* WaypointPatternGenerator.swift in Sources */,
+				8D185AF165DD4B40B6EF0842 /* AchievementEngine.swift in Sources */,
+				0BD67D09D211412880EAABC0 /* AchievementProviding.swift in Sources */,
+				3C58A5198B43425E9932D686 /* LocationProviding.swift in Sources */,
+				AA8D8838D7EA4EB5A502EC6F /* LocationService.swift in Sources */,
+				523BB7CD21984DFBB8B7A415 /* RouteGenerationProviding.swift in Sources */,
+				634563C162654768B7EF5FC2 /* RouteGenerationService.swift in Sources */,
+				9986AB997DFE4D54971E33B3 /* StepDistanceEstimating.swift in Sources */,
+				F3D6F8DB4A1843D291442287 /* StepDistanceEstimator.swift in Sources */,
+				BB90EA5E0CB44C7C903D3BD4 /* WalkSessionManager.swift in Sources */,
+				25E3B47BF9E24DBB9BFCA9AB /* WalkSessionManaging.swift in Sources */,
+				EA1D44190A9540259E1AEBD5 /* Formatting.swift in Sources */,
+				FE483BCCFF80467F9678125C /* MapRegion+Fitting.swift in Sources */,
+				4D292117CF4846A8A0211291 /* ASCard.swift in Sources */,
+				F1A16D6215C64594BA24060E /* MetricCard.swift in Sources */,
+				25B57305064F41A4A1EC3EDD /* PrimaryButton.swift in Sources */,
+				1B27E65F02C347D2A2151BAE /* Theme.swift in Sources */,
+				E7D7B7A23C5948D7B83827A8 /* AchievementsView.swift in Sources */,
+				095463B347D841AEBF163675 /* AchievementsViewModel.swift in Sources */,
+				ACFBA94083D549AB8A3A827A /* ActiveWalkView.swift in Sources */,
+				84712E05285C408FA6138EF6 /* ActiveWalkViewModel.swift in Sources */,
+				01F19998FDB24BFD8AD2FC61 /* HomeStack.swift in Sources */,
+				544749B288BF4F0CA7099A14 /* HomeView.swift in Sources */,
+				AB4073434FCB45539759CDCC /* HomeViewModel.swift in Sources */,
+				1133C1B706504FC3A9B3DACC /* OnboardingView.swift in Sources */,
+				23945F21755C41D4BB2E8E93 /* OnboardingViewModel.swift in Sources */,
+				8B60DBA573E3420F856493A6 /* RoutePreviewView.swift in Sources */,
+				D25705CC15774A828944FE83 /* RoutePreviewViewModel.swift in Sources */,
+				BF9E420A60CD4E888737843D /* SettingsView.swift in Sources */,
+				CDDB408954204A998EB2813B /* SettingsViewModel.swift in Sources */,
+				E59DB1301AA74D8090B08FE1 /* CelebrationConfettiView.swift in Sources */,
+				9D6E8154791A40F9AE15CE5C /* WalkCompleteView.swift in Sources */,
+				B0914705F5D24C4EB61247F6 /* WalkCompleteViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		/* End PBXSourcesBuildPhase section */
 		/* Begin PBXFrameworksBuildPhase section */
-		80FA7227D3DB49058743997E /* Frameworks */ = {
+		4BC1CF2AB3284FA9B0DC67CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = ();
@@ -418,18 +450,18 @@
 		};
 		/* End PBXFrameworksBuildPhase section */
 		/* Begin PBXSourcesBuildPhase section */
-		F4F593F8771E439DA6C78883 /* Sources */ = {
+		CD9D60E68CDD4E718FE851E1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30201BDB92614ECBB738BD6D /* RouteScoringTests.swift in Sources */,
-				B5CB9EF2DEC847589C4BB40E /* StepDistanceEstimatorTests.swift in Sources */,
+				B4123939F26D48EFA198542E /* RouteScoringTests.swift in Sources */,
+				0EB629269E934FAEB40AE583 /* StepDistanceEstimatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		/* End PBXSourcesBuildPhase section */
 		/* Begin XCBuildConfiguration section */
-		E01990E5C3A94B778AB8DAD0 /* Debug */ = {
+		FA6115F1449140B2A38C1174 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {{
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -458,7 +490,7 @@
 			}};
 			name = Debug;
 		};
-		AD44DAD796FE46AE912568B7 /* Release */ = {
+		D2D35F834CD142C1BAF2C88B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {{
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -487,7 +519,7 @@
 			}};
 			name = Release;
 		};
-		C7F29DB5E039412EAA9C7460 /* Debug */ = {
+		71BF1E6D6BDC4433A2FB9D58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {{
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -505,7 +537,7 @@
 			}};
 			name = Debug;
 		};
-		1295AB00C43640B79F1A2863 /* Release */ = {
+		1779D6D0AB6A4689BF62B72E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {{
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -522,7 +554,7 @@
 			}};
 			name = Release;
 		};
-		8D02E0BCCD034AB2B6FCE633 /* Debug */ = {
+		AA1033D94DFB491A89358008 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {{
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -544,7 +576,7 @@
 			}};
 			name = Debug;
 		};
-		57D02D0660D746258A1E0767 /* Release */ = {
+		5F86C4AC10234DC0B59149DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {{
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -569,34 +601,34 @@
 		};
 		/* End XCBuildConfiguration section */
 		/* Begin XCConfigurationList section */
-		8A97B51CDA344242A1DCB3F8 /* Build configuration list for PBXNativeTarget "AverageStepper" */ = {
+		F2B627F0E4B5408A9210EEDA /* Build configuration list for PBXNativeTarget "AverageStepper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E01990E5C3A94B778AB8DAD0 /* Debug */,
-				AD44DAD796FE46AE912568B7 /* Release */,
+				FA6115F1449140B2A38C1174 /* Debug */,
+				D2D35F834CD142C1BAF2C88B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		35B924A5D2A247A6A55ACDBD /* Build configuration list for PBXNativeTarget "AverageStepperTests" */ = {
+		5BFC16B8AC174DCE9D07E5DF /* Build configuration list for PBXNativeTarget "AverageStepperTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D02E0BCCD034AB2B6FCE633 /* Debug */,
-				57D02D0660D746258A1E0767 /* Release */,
+				AA1033D94DFB491A89358008 /* Debug */,
+				5F86C4AC10234DC0B59149DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		89662033E2074CFE9E87E802 /* Build configuration list for PBXProject "AverageStepper" */ = {
+		0AA7022D0E674B4A958AE98A /* Build configuration list for PBXProject "AverageStepper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C7F29DB5E039412EAA9C7460 /* Debug */,
-				1295AB00C43640B79F1A2863 /* Release */,
+				71BF1E6D6BDC4433A2FB9D58 /* Debug */,
+				1779D6D0AB6A4689BF62B72E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		/* End XCConfigurationList section */
 	};
-	rootObject = E5C908EC26D34083B1B59CF5 /* Project object */;
+	rootObject = A9187DF893294AF3A9C03D7A /* Project object */;
 }
