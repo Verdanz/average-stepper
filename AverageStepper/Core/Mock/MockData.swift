@@ -8,7 +8,9 @@ enum MockData {
         walkingSpeedMetersPerSecond: 1.4,
         loopClosureRadiusMeters: 100,
         units: .metric,
-        hasCompletedOnboarding: true
+        hasCompletedOnboarding: true,
+        celebratoryAnimationsEnabled: true,
+        defaultTargetSteps: 5000
     )
 
     static let sampleGoal = WalkGoal(targetSteps: 5000)

@@ -9,11 +9,13 @@ struct RootView: View {
         Group {
             if dependencies.preferences.hasCompletedOnboarding {
                 MainTabView()
+                    .transition(.opacity)
             } else {
                 OnboardingView()
+                    .transition(.opacity)
             }
         }
-        .animation(.easeInOut, value: dependencies.preferences.hasCompletedOnboarding)
+        .animation(.easeInOut(duration: 0.28), value: dependencies.preferences.hasCompletedOnboarding)
         .onAppear {
             if dependencies.walkSessionManager.needsResumeWalkPresentation {
                 resumeWalkPresented = true

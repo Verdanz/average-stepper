@@ -6,6 +6,15 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            Section("Default step goal") {
+                Text("Starting target when you open Plan — same presets as quick picks on the home screen.")
+                    .font(Theme.caption)
+                    .foregroundStyle(.secondary)
+                presetGrid(values: [3000, 4000, 5000, 6000, 8000, 10_000, 12_000], selection: defaultStepsBinding) { v in
+                    "\(v / 1000)k"
+                }
+            }
+
             Section("Walking model") {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Stride length: \(Int(dependencies.preferences.strideMeters * 100)) cm")
@@ -17,15 +26,16 @@ struct SettingsView: View {
                                 var prefs = dependencies.preferences
                                 prefs.strideMeters = newValue
                                 dependencies.preferences = prefs
-                                model.markNeedsPersistence()
                             }
                         ),
                         in: 0.55...0.95,
                         step: 0.01
                     ) {
-                        Text("Stride")
+                        Text("Stride length")
                     }
-                    Text("Used to convert steps ↔ distance. Tune to match your height or past walks.")
+                    .accessibilityLabel("Stride length, \(Int(dependencies.preferences.strideMeters * 100)) centimeters")
+
+                    Text("Converts steps ↔ distance. Tune to your height or past walks.")
                         .font(Theme.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -39,14 +49,14 @@ struct SettingsView: View {
                                 var prefs = dependencies.preferences
                                 prefs.walkingSpeedMetersPerSecond = newValue
                                 dependencies.preferences = prefs
-                                model.markNeedsPersistence()
                             }
                         ),
                         in: 0.9...1.8,
                         step: 0.05
                     ) {
-                        Text("Speed")
+                        Text("Walking speed")
                     }
+                    .accessibilityLabel("Walking speed for time estimates")
                 }
             }
 
@@ -61,15 +71,16 @@ struct SettingsView: View {
                                 var prefs = dependencies.preferences
                                 prefs.loopClosureRadiusMeters = newValue
                                 dependencies.preferences = prefs
-                                model.markNeedsPersistence()
                             }
                         ),
                         in: 50...250,
                         step: 10
                     ) {
-                        Text("Radius")
+                        Text("Loop closure radius")
                     }
-                    Text("How close the route should return to your start to count as a loop.")
+                    .accessibilityLabel("Loop closure radius in meters")
+
+                    Text("How close a route should return to the start to count as a loop.")
                         .font(Theme.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -77,14 +88,13 @@ struct SettingsView: View {
 
             Section("Units") {
                 Picker(
-                    "Measurement",
+                    "Measurement units",
                     selection: Binding(
                         get: { dependencies.preferences.units },
                         set: { newValue in
                             var prefs = dependencies.preferences
                             prefs.units = newValue
                             dependencies.preferences = prefs
-                            model.markNeedsPersistence()
                         }
                     )
                 ) {
@@ -92,10 +102,24 @@ struct SettingsView: View {
                     Text("Imperial").tag(MeasurementUnits.imperial)
                 }
                 .pickerStyle(.segmented)
+                .accessibilityLabel("Distance units")
             }
 
-            #if DEBUG
-            Section("Developer") {
+            Section("Experience") {
+                Toggle(
+                    "Celebratory animations",
+                    isOn: Binding(
+                        get: { dependencies.preferences.celebratoryAnimationsEnabled },
+                        set: { newValue in
+                            var prefs = dependencies.preferences
+                            prefs.celebratoryAnimationsEnabled = newValue
+                            dependencies.preferences = prefs
+                        }
+                    )
+                )
+                .accessibilityHint("Soft motion when you finish a walk")
+
+                #if DEBUG
                 Toggle(
                     "Simulate walk position",
                     isOn: Binding(
@@ -103,22 +127,94 @@ struct SettingsView: View {
                         set: { dependencies.debugSimulateWalk = $0 }
                     )
                 )
-                Text("Shows a control on the active walk screen to advance a fake GPS point along the route (Simulator-friendly).")
+                Text("Advances a test point along the route on the active walk screen.")
                     .font(Theme.caption)
                     .foregroundStyle(.secondary)
+                #endif
             }
-            #endif
 
-            Section("About") {
-                LabeledContent("Data") {
+            Section("Privacy") {
+                Text(AppCopy.Privacy.summary)
+                    .font(Theme.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            Section("Data") {
+                Button("Reset achievements", role: .destructive) {
+                    model.showResetAchievementsConfirm = true
+                }
+                .accessibilityHint("Clears completed walk history and badge progress")
+
+                Button("Reset local data", role: .destructive) {
+                    model.showResetAllDataConfirm = true
+                }
+                .accessibilityHint("Clears walks and resets stride and other settings to defaults")
+
+                LabeledContent("Storage") {
                     Text("On device")
                 }
-                Text("No account, no backend in this MVP build.")
-                    .font(Theme.caption)
-                    .foregroundStyle(.secondary)
             }
         }
         .navigationTitle("Settings")
+        .confirmationDialog(
+            "Reset achievements?",
+            isPresented: $model.showResetAchievementsConfirm,
+            titleVisibility: .visible
+        ) {
+            Button("Reset", role: .destructive) {
+                dependencies.resetWalkHistoryAndAchievements()
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This removes your completed walk history. Badges derived from history will lock again.")
+        }
+        .confirmationDialog(
+            "Reset all local data?",
+            isPresented: $model.showResetAllDataConfirm,
+            titleVisibility: .visible
+        ) {
+            Button("Reset everything on device", role: .destructive) {
+                dependencies.resetAllLocalData()
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Clears walk history and resets preferences to defaults. Your account is not affected — there is no account in this build.")
+        }
+    }
+
+    private var defaultStepsBinding: Binding<Int> {
+        Binding(
+            get: { dependencies.preferences.defaultTargetSteps },
+            set: { newValue in
+                var prefs = dependencies.preferences
+                prefs.defaultTargetSteps = newValue
+                dependencies.preferences = prefs
+            }
+        )
+    }
+
+    private func presetGrid(
+        values: [Int],
+        selection: Binding<Int>,
+        label: @escaping (Int) -> String
+    ) -> some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 88), spacing: 8)], spacing: 8) {
+            ForEach(values, id: \.self) { value in
+                Button {
+                    selection.wrappedValue = value
+                } label: {
+                    Text(label(value))
+                        .font(Theme.body.weight(.medium))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.bordered)
+                .tint(selection.wrappedValue == value ? Color.accentColor : Color.secondary)
+                .accessibilityLabel("\(value) steps")
+                .accessibilityAddTraits(selection.wrappedValue == value ? .isSelected : [])
+            }
+        }
     }
 }
 

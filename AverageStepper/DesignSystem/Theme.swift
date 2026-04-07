@@ -6,6 +6,8 @@ enum Theme {
     static let cardPadding: CGFloat = 16
     static let sectionSpacing: CGFloat = 20
     static let contentMaxWidth: CGFloat = 560
+    /// Minimum touch target (HIG / accessibility).
+    static let minimumTapTarget: CGFloat = 44
 
     static let title = Font.system(.title, design: .rounded).weight(.semibold)
     static let headline = Font.system(.title3, design: .rounded).weight(.semibold)

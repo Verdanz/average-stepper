@@ -4,17 +4,24 @@ import Observation
 @Observable
 @MainActor
 final class OnboardingViewModel {
-    var isRequestingPermission = false
+    var stepIndex: Int = 0
+    let pageCount = 5
 
-    func completeIntro(dependencies: AppDependencies) {
-        // TODO: Persist `hasCompletedOnboarding` to UserDefaults / SwiftData.
-        dependencies.preferences.hasCompletedOnboarding = true
+    func advance() {
+        stepIndex = min(stepIndex + 1, pageCount - 1)
+    }
+
+    func goBack() {
+        stepIndex = max(stepIndex - 1, 0)
     }
 
     func requestLocation(dependencies: AppDependencies) {
-        isRequestingPermission = true
-        dependencies.locationService.requestWhenInUseAuthorization()
-        // TODO: Observe authorization callback and continue flow when authorized.
-        isRequestingPermission = false
+        dependencies.locationForObservation.requestWhenInUseAuthorization()
+    }
+
+    func completeOnboarding(dependencies: AppDependencies) {
+        var prefs = dependencies.preferences
+        prefs.hasCompletedOnboarding = true
+        dependencies.preferences = prefs
     }
 }

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WalkCompleteView: View {
     @Environment(AppDependencies.self) private var dependencies
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Binding var path: [HomeStack]
     /// Called after the session is cleared (e.g. dismiss resume `fullScreenCover`).
     var onBackToHome: (() -> Void)? = nil
@@ -25,10 +26,12 @@ struct WalkCompleteView: View {
     @ViewBuilder
     private func content(model: WalkCompleteViewModel) -> some View {
         ZStack(alignment: .top) {
-            CelebrationConfettiView()
-                .frame(height: 160)
-                .frame(maxWidth: .infinity)
-                .padding(.top, 4)
+            if dependencies.preferences.celebratoryAnimationsEnabled, !reduceMotion {
+                CelebrationConfettiView()
+                    .frame(height: 160)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 4)
+            }
 
             ScrollView {
                 VStack(alignment: .leading, spacing: Theme.sectionSpacing) {
@@ -96,7 +99,7 @@ struct WalkCompleteView: View {
                 .padding()
                 .frame(maxWidth: Theme.contentMaxWidth)
                 .frame(maxWidth: .infinity)
-                .padding(.top, 120)
+                .padding(.top, dependencies.preferences.celebratoryAnimationsEnabled && !reduceMotion ? 120 : 16)
             }
         }
         .background(Color(.systemGroupedBackground))

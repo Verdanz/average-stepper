@@ -317,7 +317,7 @@ def main() -> None:
         pb.append("\t\t\t\tGENERATE_INFOPLIST_FILE = YES;")
         pb.append("\t\t\t\tINFOPLIST_KEY_CFBundleDisplayName = \"Average Stepper\";")
         pb.append(
-            "\t\t\t\tINFOPLIST_KEY_NSLocationWhenInUseUsageDescription = \"Average Stepper uses your location to build walking routes and track your walk.\";"
+            "\t\t\t\tINFOPLIST_KEY_NSLocationWhenInUseUsageDescription = \"Average Stepper needs your approximate location to generate walking routes near you and to show your position during an active walk. Data stays on your device.\";"
         )
         pb.append("\t\t\t\tINFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;")
         pb.append("\t\t\t\tINFOPLIST_KEY_UILaunchScreen_Generation = YES;")

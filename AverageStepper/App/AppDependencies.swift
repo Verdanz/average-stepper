@@ -2,12 +2,17 @@ import CoreLocation
 import Foundation
 import Observation
 
-/// Composition root for services and user preferences (MVP: in-memory preferences).
+/// Composition root for services and user preferences (MVP: local persistence).
 @Observable
 @MainActor
 final class AppDependencies {
-    var preferences: UserPreferences
+    var preferences: UserPreferences {
+        didSet { UserPreferencesStore.save(preferences) }
+    }
+
     let locationService: LocationProviding
+    /// Same instance as `locationService` — use with `@Bindable` for authorization UI updates.
+    let locationForObservation: LocationService
     let routeGenerationService: RouteGenerationProviding
     let stepEstimator: StepDistanceEstimating
     let walkSessionManager: WalkSessionManager
@@ -23,6 +28,7 @@ final class AppDependencies {
     init(
         preferences: UserPreferences,
         locationService: LocationProviding,
+        locationForObservation: LocationService,
         routeGenerationService: RouteGenerationProviding,
         stepEstimator: StepDistanceEstimating,
         walkSessionManager: WalkSessionManager,
@@ -32,6 +38,7 @@ final class AppDependencies {
     ) {
         self.preferences = preferences
         self.locationService = locationService
+        self.locationForObservation = locationForObservation
         self.routeGenerationService = routeGenerationService
         self.stepEstimator = stepEstimator
         self.walkSessionManager = walkSessionManager
@@ -46,6 +53,20 @@ final class AppDependencies {
         try? gamificationPersistence.save(PersistedGamification(schemaVersion: 1, sessions: walkHistory))
     }
 
+    /// Clears completed walks and achievement progress derived from history.
+    func resetWalkHistoryAndAchievements() {
+        walkHistory = []
+        try? gamificationPersistence.save(PersistedGamification(schemaVersion: 1, sessions: []))
+    }
+
+    /// Clears walks and resets preferences to defaults while keeping onboarding complete.
+    func resetAllLocalData() {
+        resetWalkHistoryAndAchievements()
+        var fresh = UserPreferences.default
+        fresh.hasCompletedOnboarding = true
+        preferences = fresh
+    }
+
     static let live: AppDependencies = {
         let location = LocationService()
         let persistence = WalkSessionPersistence()
@@ -57,9 +78,11 @@ final class AppDependencies {
         let gamificationPersistence = GamificationPersistence()
         let loaded = try? gamificationPersistence.load()
         let history = loaded?.sessions ?? []
+        let prefs = UserPreferencesStore.load()
         return AppDependencies(
-            preferences: UserPreferences.default,
+            preferences: prefs,
             locationService: location,
+            locationForObservation: location,
             routeGenerationService: RouteGenerationService(),
             stepEstimator: StepDistanceEstimator(),
             walkSessionManager: walk,
@@ -90,6 +113,7 @@ final class AppDependencies {
         return AppDependencies(
             preferences: MockData.samplePreferences,
             locationService: location,
+            locationForObservation: location,
             routeGenerationService: RouteGenerationService(),
             stepEstimator: StepDistanceEstimator(),
             walkSessionManager: walk,

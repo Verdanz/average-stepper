@@ -1,7 +1,10 @@
 import CoreLocation
 import Foundation
+import Observation
 
 /// Core Location wrapper. Forwards updates to an optional handler for `WalkSessionManager`.
+@Observable
+@MainActor
 final class LocationService: NSObject, LocationProviding {
     private let manager: CLLocationManager
 
@@ -36,7 +39,7 @@ final class LocationService: NSObject, LocationProviding {
         manager.stopUpdatingLocation()
     }
 
-    private func refreshAuthorizationState() {
+    fileprivate func refreshAuthorizationState() {
         switch manager.authorizationStatus {
         case .notDetermined:
             authorizationState = .notDetermined
@@ -53,20 +56,21 @@ final class LocationService: NSObject, LocationProviding {
 }
 
 extension LocationService: CLLocationManagerDelegate {
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        refreshAuthorizationState()
+    nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        Task { @MainActor in
+            self.refreshAuthorizationState()
+        }
     }
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    nonisolated func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let loc = locations.last else { return }
-        latestLocation = loc
-        DispatchQueue.main.async {
+        Task { @MainActor in
+            self.latestLocation = loc
             self.locationHandler?(loc)
         }
     }
 
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // GPS errors are common; consumer keeps last fix and shows degraded UI.
+    nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         _ = error
     }
 }

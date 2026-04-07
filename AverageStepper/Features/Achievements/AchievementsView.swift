@@ -11,6 +11,15 @@ struct AchievementsView: View {
             VStack(alignment: .leading, spacing: Theme.sectionSpacing) {
                 summarySection
 
+                if model.totals.totalCompletedWalks == 0 {
+                    ASCard {
+                        Text("Finish a walk to start earning badges and fill your stats.")
+                            .font(Theme.body)
+                            .foregroundStyle(.secondary)
+                    }
+                    .accessibilityLabel("No completed walks yet. Finish a walk to earn badges.")
+                }
+
                 if let nudge = model.streakNudge {
                     ASCard {
                         Text(nudge)

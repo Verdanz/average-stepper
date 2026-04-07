@@ -5,9 +5,12 @@ import Observation
 @Observable
 @MainActor
 final class HomeViewModel {
-    var targetSteps: Int = 5000
+    var targetSteps: Int
     var isGenerating = false
+    /// Blocking error (e.g. route failure, permission).
     var lastError: String?
+    /// Non-blocking hint (GPS quality, waiting for fix).
+    var routeHint: String?
 
     private let routeService: RouteGenerationProviding
     private let locationService: LocationProviding
@@ -24,6 +27,7 @@ final class HomeViewModel {
         self.locationService = locationService
         self.preferences = preferences
         self.stepEstimator = stepEstimator
+        self.targetSteps = preferences.defaultTargetSteps
     }
 
     /// Estimated distance for the current slider/input using stride from preferences.
@@ -38,21 +42,38 @@ final class HomeViewModel {
         )
     }
 
+    func clearError() {
+        lastError = nil
+    }
+
     /// Produces a route using current location or a fallback coordinate for previews/simulator.
     func generateRoute() async -> GeneratedRoute? {
         isGenerating = true
         lastError = nil
+        routeHint = nil
         defer { isGenerating = false }
 
         locationService.requestWhenInUseAuthorization()
         locationService.startUpdatingLocation()
 
+        switch locationService.authorizationState {
+        case .denied:
+            lastError = AppCopy.Generation.deniedShort
+            return nil
+        case .notDetermined, .authorizedWhenInUse, .authorizedAlways:
+            break
+        }
+
         let coordinate: CLLocationCoordinate2D
-        if let loc = locationService.latestLocation?.coordinate {
-            coordinate = loc
+        if let loc = locationService.latestLocation {
+            coordinate = loc.coordinate
+            let acc = loc.horizontalAccuracy
+            if acc > 0, acc > 80 {
+                routeHint = AppCopy.GPS.lowAccuracy
+            }
         } else {
-            // TODO: Block UI until we have a fix, or show explicit "location unknown" state.
             coordinate = CLLocationCoordinate2D(latitude: 37.3349, longitude: -122.0090)
+            routeHint = AppCopy.Generation.noLocationFix
         }
 
         let goal = WalkGoal(targetSteps: targetSteps)
@@ -62,11 +83,11 @@ final class HomeViewModel {
         } catch let error as RouteGenerationError {
             switch error {
             case .noCandidateFound:
-                lastError = "Couldn’t build a walking route here. Try again or adjust your step goal."
+                lastError = AppCopy.Generation.noRouteNearby()
             case .directionsFailed(let message):
-                lastError = message
+                lastError = AppCopy.Generation.directionsFailed(message)
             case .noLocation:
-                lastError = "Location is required to build a route."
+                lastError = AppCopy.Generation.noLocationFix
             }
             return nil
         } catch {

@@ -21,9 +21,11 @@ struct PrimaryButton: View {
                 }
                 Text(title)
                     .font(Theme.headline)
+                    .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
             }
-            .padding(.vertical, 14)
+            .frame(minHeight: Theme.minimumTapTarget)
+            .padding(.vertical, 6)
         }
         .buttonStyle(.borderedProminent)
         .controlSize(.large)
@@ -49,9 +51,11 @@ struct SecondaryButton: View {
                 }
                 Text(title)
                     .font(Theme.headline)
+                    .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
             }
-            .padding(.vertical, 12)
+            .frame(minHeight: Theme.minimumTapTarget)
+            .padding(.vertical, 4)
         }
         .buttonStyle(.bordered)
     }
