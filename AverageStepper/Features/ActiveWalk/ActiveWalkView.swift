@@ -45,13 +45,15 @@ struct ActiveWalkView: View {
     private func activeContent(model: ActiveWalkViewModel, walk: WalkSessionManager) -> some View {
         let session = walk.session
         if session.status != .active {
-            ContentUnavailableView(
-                "No active walk",
-                systemImage: "figure.walk",
-                description: Text("Start a walk from a route preview.")
-            )
-            PrimaryButton("Back", systemImage: "chevron.left") {
-                path.removeLast()
+            VStack(spacing: Theme.sectionSpacing) {
+                ContentUnavailableView(
+                    "No active walk",
+                    systemImage: "figure.walk",
+                    description: Text("Start a walk from a route preview.")
+                )
+                PrimaryButton("Back", systemImage: "chevron.left") {
+                    path.removeLast()
+                }
             }
             .padding()
         } else {

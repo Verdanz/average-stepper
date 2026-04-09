@@ -7,7 +7,7 @@ enum RouteGenerationError: Error, Equatable, Sendable {
     case noCandidateFound
 }
 
-/// Builds walking routes (MVP: mock + `MKDirections` to be wired in `RouteGenerationService`).
+/// Builds walking routes via `RouteGenerationService` → `RouteGenerationPipeline` (`MKDirections` walking legs).
 protocol RouteGenerationProviding {
     func generateRoute(
         goal: WalkGoal,

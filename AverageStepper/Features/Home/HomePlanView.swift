@@ -154,6 +154,12 @@ struct HomePlanView: View {
         .onChange(of: dependencies.preferences.defaultTargetSteps) { _, newValue in
             model.targetSteps = newValue
         }
+        .onChange(of: model.targetSteps) { _, newValue in
+            var prefs = dependencies.preferences
+            guard prefs.defaultTargetSteps != newValue else { return }
+            prefs.defaultTargetSteps = newValue
+            dependencies.preferences = prefs
+        }
     }
 
     private var locationDeniedCard: some View {

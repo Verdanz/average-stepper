@@ -16,17 +16,21 @@ final class HomeViewModel {
     private let locationService: LocationProviding
     private let preferences: UserPreferences
     private let stepEstimator: StepDistanceEstimating
+    /// Used so we do not stop Core Location after planning when an active walk still needs updates.
+    private let walkSession: WalkSessionManaging
 
     init(
         routeService: RouteGenerationProviding,
         locationService: LocationProviding,
         preferences: UserPreferences,
-        stepEstimator: StepDistanceEstimating
+        stepEstimator: StepDistanceEstimating,
+        walkSession: WalkSessionManaging
     ) {
         self.routeService = routeService
         self.locationService = locationService
         self.preferences = preferences
         self.stepEstimator = stepEstimator
+        self.walkSession = walkSession
         self.targetSteps = preferences.defaultTargetSteps
     }
 
@@ -51,7 +55,12 @@ final class HomeViewModel {
         isGenerating = true
         lastError = nil
         routeHint = nil
-        defer { isGenerating = false }
+        defer {
+            isGenerating = false
+            if walkSession.session.status != .active {
+                locationService.stopUpdatingLocation()
+            }
+        }
 
         locationService.requestWhenInUseAuthorization()
         locationService.startUpdatingLocation()

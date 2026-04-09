@@ -85,6 +85,8 @@
 		E0B1651033D24B61838477F7 /* StepDistanceEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846C7586538C4819B84C0F55; };
 		133AAA8214E6456C9D9909CA /* StreakManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA75F371B28145DFAD86AC0C; };
 		46181D49AC6341049E1525FF /* WalkSessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE87D8296D4137AE14DA26; };
+		AA10BB20CC30DD40EE50FA62 /* GeodesyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10BB20CC30DD40EE50FA61 /* GeodesyTests.swift */; };
+		BB20CC30DD40EE50FA60BB12 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20CC30DD40EE50FA60BB11 /* HomeViewModelTests.swift */; };
 		F39E38AF28654FE8B650BA0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5082F70F76174C42B1FEF3C2; };
 		/* End PBXBuildFile section */
 		/* Begin PBXFileReference section */
@@ -171,6 +173,8 @@
 		846C7586538C4819B84C0F55 /* StepDistanceEstimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StepDistanceEstimatorTests.swift"; sourceTree = "<group>"; };
 		DA75F371B28145DFAD86AC0C /* StreakManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StreakManagerTests.swift"; sourceTree = "<group>"; };
 		D0EE87D8296D4137AE14DA26 /* WalkSessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalkSessionManagerTests.swift"; sourceTree = "<group>"; };
+		AA10BB20CC30DD40EE50FA61 /* GeodesyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeodesyTests.swift"; sourceTree = "<group>"; };
+		BB20CC30DD40EE50FA60BB11 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModelTests.swift"; sourceTree = "<group>"; };
 		/* End PBXFileReference section */
 		/* Begin PBXFrameworksBuildPhase section */
 		12A6DEC66E4B4846842BEEA1 /* Frameworks */ = {
@@ -298,6 +302,8 @@
 				846C7586538C4819B84C0F55,
 				DA75F371B28145DFAD86AC0C,
 				D0EE87D8296D4137AE14DA26,
+				AA10BB20CC30DD40EE50FA61,
+				BB20CC30DD40EE50FA60BB11,
 			);
 			path = AverageStepperTests;
 			sourceTree = "<group>";
@@ -492,6 +498,8 @@
 				E0B1651033D24B61838477F7 /* StepDistanceEstimatorTests.swift in Sources */,
 				133AAA8214E6456C9D9909CA /* StreakManagerTests.swift in Sources */,
 				46181D49AC6341049E1525FF /* WalkSessionManagerTests.swift in Sources */,
+				AA10BB20CC30DD40EE50FA62 /* GeodesyTests.swift in Sources */,
+				BB20CC30DD40EE50FA60BB12 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

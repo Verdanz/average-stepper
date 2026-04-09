@@ -32,7 +32,8 @@ struct HomeView: View {
                             routeService: dependencies.routeGenerationService,
                             locationService: dependencies.locationService,
                             preferences: dependencies.preferences,
-                            stepEstimator: dependencies.stepEstimator
+                            stepEstimator: dependencies.stepEstimator,
+                            walkSession: dependencies.walkSessionManager
                         )
                     }
             }

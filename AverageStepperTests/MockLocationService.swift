@@ -7,13 +7,19 @@ import Foundation
 final class MockLocationService: LocationProviding {
     var authorizationState: LocationAuthorizationState = .authorizedWhenInUse
     var latestLocation: CLLocation?
+    private(set) var stopUpdatingLocationCallCount = 0
+    private(set) var startUpdatingLocationCallCount = 0
     private var locationHandler: (@MainActor (CLLocation) -> Void)?
 
     func requestWhenInUseAuthorization() {}
 
-    func startUpdatingLocation() {}
+    func startUpdatingLocation() {
+        startUpdatingLocationCallCount += 1
+    }
 
-    func stopUpdatingLocation() {}
+    func stopUpdatingLocation() {
+        stopUpdatingLocationCallCount += 1
+    }
 
     func setLocationUpdateHandler(_ handler: (@MainActor (CLLocation) -> Void)?) {
         locationHandler = handler
