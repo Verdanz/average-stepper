@@ -1,130 +1,346 @@
-# Average Stepper
+# Average Stepper — Xcode testing guide
 
-## 1. Project overview
+This document walks you through cloning **Average Stepper** from GitHub, opening it in Xcode on your MacBook, running it in the Simulator, and exercising the main flows. Follow sections **1 → 8** in order the first time.
 
-**Average Stepper** is a local-first iOS MVP that turns a **target step count** into **walking routes** near the user’s current position. It uses **MapKit** walking directions to chain segments into loop-style or out-and-back paths, tracks an **active walk** with Core Location, estimates steps from distance via stride, and awards **badges / streaks** from on-device walk history—no account and no backend in this build.
+**What this repo contains**
 
-## 2. MVP feature list
-
-- **Onboarding**: Multi-page flow explaining location use, route generation, tracking, and a dedicated permissions step with status and Settings link when denied.
-- **Plan (Home)**: Step goal (stepper + quick picks), estimated distance/time, **Generate route** (MapKit-backed pipeline), hints for weak GPS / Apple Park default in Simulator.
-- **Route preview**: Map polyline, pick among scored route options, **Start walk**.
-- **Active walk**: Live map, steps/distance/route progress, pause/resume, adherence hints, optional **Simulate position** (DEBUG settings) for Simulator.
-- **Walk complete**: Summary, streaks, lifetime totals, newly unlocked achievements, confetti (respects Reduce Motion).
-- **Achievements**: Badges driven by local history rules.
-- **Settings**: Default step goal, stride, walking speed, loop closure preference, units, animations, DEBUG simulation toggle, reset achievements / reset all local data.
-- **Resume after relaunch**: If a walk was active, a **full-screen resume** stack appears on next launch until acknowledged.
-
-## 3. Tech stack
-
-| Area | Choice |
-|------|--------|
-| UI | SwiftUI |
-| Pattern | MVVM-ish (`@Observable` view models + feature views; `AppDependencies` composition root) |
-| Maps / routing | MapKit (`MKMapView` via SwiftUI `Map`, `MKDirections` for walking legs) |
-| Location | Core Location (`CLLocationManager`, when-in-use) |
-| Persistence | JSON in Application Support / documents (`UserPreferencesStore`, `WalkSessionPersistence`, `GamificationPersistence`) |
-| Minimum OS | iOS **17.0** (per Xcode project) |
-
-## 4. Architecture overview
-
-- **`AverageStepperApp`** → injects **`AppDependencies`** (`@Observable`) into the environment.
-- **`RootView`**: Onboarding vs **`MainTabView`**; presents **`ResumeWalkNavigationStack`** when an interrupted active walk is restored from disk.
-- **`MainTabView`**: Tabs for Plan (`HomeView` → `NavigationStack` + `HomeStack` destinations), Achievements, Settings.
-- **Routing**: `RouteGenerationService` → `RouteGenerationPipeline` (waypoint patterns → `RouteWaypointAssembler` + `MKDirectionsWalkingDirectionsService` → scoring → top options).
-- **Active walk**: `WalkSessionManager` owns session state, timer-based persistence, location handler, step estimation, route progress / completion rules.
-- **Gamification**: `AchievementEngine` + `BadgeCatalog` rules over `walkHistory` loaded at launch; `recordCompletedWalk` appends on completion.
-
-## 5. Folder structure overview
-
-```
-AverageStepper/
-├── AverageStepperApp.swift
-├── App/                 # RootView, MainTabView, AppDependencies, resume stack
-├── Features/            # Onboarding, Home, RoutePreview, ActiveWalk, WalkComplete, Achievements, Settings
-├── DesignSystem/        # Theme, buttons, cards
-├── Core/
-│   ├── Models/          # WalkSession, routes, preferences, etc.
-│   ├── Services/        # Location, routing, walk session, achievements, step distance
-│   ├── Routing/         # Pipeline, scoring, MapKit directions, waypoint math
-│   ├── Gamification/    # Badges, streaks, rules, persistence types
-│   ├── ActiveWalk/      # Polyline math, walk snapshot persistence
-│   ├── Persistence/     # User preferences store
-│   ├── Utilities/       # Copy, formatting, map region fitting
-│   └── Mock/            # MockData for previews/tests
-├── Resources/Assets.xcassets
-AverageStepperTests/     # Unit tests (routing, gamification, walk session, geodesy, home VM, etc.)
-AverageStepper.xcodeproj
-scripts/gen_xcodeproj.py # Optional helper script (if used in your workflow)
-```
-
-## 6. Requirements to run the app
-
-- **macOS** with **Xcode 15+** (project last opened with Xcode 15 settings; iOS 17 SDK).
-- An **Apple ID** for signing (Simulator can use automatic signing with a personal team in many setups).
-- **iPhone Simulator** or a physical **iPhone** with iOS 17+.
-
-This repository was validated by code review here; **full compilation was not executed** in this environment because only Xcode Command Line Tools were available (`xcodebuild` requires the full Xcode app as the active developer directory). You should confirm a clean build locally (see below).
-
-## 7. Step-by-step: open and run in Xcode (MacBook)
-
-1. Install **Xcode** from the Mac App Store (or Apple Developer) and open it once to finish installing components.
-2. If needed, set the active developer directory:  
-   `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`
-3. Clone or copy this repo and double-click **`AverageStepper.xcodeproj`** (or **File → Open** in Xcode).
-4. In the toolbar, select the **AverageStepper** scheme and a destination (**iPhone 16** or any iOS 17+ Simulator, or your device).
-5. Select the **AverageStepper** target → **Signing & Capabilities**: choose your **Team** so the app can run on device; Simulator often works with automatic signing.
-6. Press **Run** (⌘R).
-
-## 8. How to test in Simulator
-
-- Exercise **onboarding**, **Plan**, **route generation** (expect network use for MapKit; failures are possible in poor network or sparse map data).
-- For **active walk** without GPS, enable **Settings → Simulate walk position** (only in **DEBUG** builds) and use **Simulate position along route** on the active walk screen.
-- Use **Device → Location** in Simulator to set a custom location or Apple’s canned routes when testing real location updates.
-
-## 9. How to test location-dependent behavior
-
-- **Simulator**: **Features → Location** → choose a **custom** or city location before generating a route; leave location **none** to exercise the “no fix / default coordinate” hints.
-- **Device**: Test outdoors for faster GPS; verify **waiting for GPS** → **tracking** transitions and map annotation movement.
-- **Denied permission**: iOS **Settings → Privacy & Security → Location Services** → **Average Stepper** → **Never**, then confirm Plan and Active Walk show errors and **Open Settings** flows.
-
-## 10. How to test the permissions flow
-
-1. Delete the app (or reset **Settings → General → Transfer or Reset → Reset Location & Privacy** for a clean prompt—destructive for all apps).
-2. Launch the app: complete onboarding through **Allow location** (system dialog).
-3. Deny once: confirm **Plan** blocks **Generate route** with copy for denied access.
-4. From onboarding’s denied state, use **Open Settings** and return after enabling **While Using the App**.
-
-## 11. How to run unit tests in Xcode
-
-1. Open **`AverageStepper.xcodeproj`**.
-2. Press **⌘U** or **Product → Test**.
-3. The **AverageStepperTests** target runs tests such as routing, streaks, walk session, geodesy, and home view model behavior.
-
-## 12. Known limitations of the MVP
-
-- **No HealthKit / pedometer**: “Steps” during a walk are **estimated from GPS distance × stride**, not Apple Watch or CMStepCounter.
-- **No background tracking**: Uses **when-in-use** location only; no background modes for walking.
-- **No live rerouting**: Route is fixed after preview; copy states this explicitly.
-- **Heuristic routes**: Loops are built from geometric waypoints + MapKit legs; results vary by area, pedestrian graph, and Apple’s routing.
-- **Bundle ID** is `com.example.AverageStepper`—change before App Store distribution.
-- **Development team** is blank in the project; you must assign signing locally.
-- **App Store privacy manifest**: If you ship to the App Store, you may need a **PrivacyInfo.xcprivacy** file describing required-reason APIs; not included in this MVP repo—confirm with Apple’s current requirements before submission.
-
-## 13. Future improvements
-
-- Real step counts (HealthKit / Core Motion) with privacy copy and optional entitlements.
-- Smarter rerouting or off-route recovery when user leaves the polyline.
-- Richer tests around `RouteGenerationPipeline` with injected `WalkingDirectionsProviding` mocks.
-- Background audio/voice cues only if product scope expands (would need more entitlements and UX).
-- Replace `com.example` bundle identifier and add CI (Xcode Cloud or GitHub Actions on macOS) for `xcodebuild test`.
-
-## 14. Privacy note (local-first MVP)
-
-- Location is used **while using the app** to generate nearby routes and show position during walks, as described in **`INFOPLIST_KEY_NSLocationWhenInUseUsageDescription`** in the Xcode target (generated Info.plist).
-- Walk history and preferences are stored **locally as JSON**; there is **no server**, **no account**, and **no analytics SDK** in this codebase.
-- Users can **reset achievements** or **reset all local data** from Settings.
+- **`AverageStepper.xcodeproj`** — open this in Xcode (there is **no** `.xcworkspace` and **no** CocoaPods).
+- **`AverageStepper/`** — Swift source, assets.
+- **`AverageStepperTests/`** — unit tests.
+- **`scripts/gen_xcodeproj.py`** — optional; you do **not** need it to build the app from GitHub.
 
 ---
 
-*Generated for this repository’s structure and code as of the MVP audit; behavior on device remains **your** final check in Xcode.*
+## 1. Prerequisites
+
+### macOS and Xcode
+
+- **macOS** recent enough to run **Xcode 15+** (the project file reports `LastUpgradeCheck = 1500`).
+- **Xcode** from the Mac App Store or [Apple Developer](https://developer.apple.com/xcode/). After install, open Xcode once so it finishes installing extra components (simulators, etc.).
+
+**Runtime requirement (Simulator / device)**
+
+- The app target uses **`IPHONEOS_DEPLOYMENT_TARGET = 17.0`**. Use an **iPhone simulator or device running iOS 17 or later** (e.g. iPhone 15 / 16 simulators with iOS 17+).
+
+### Apple Developer account
+
+- **Simulator only:** You do **not** need a **paid** Apple Developer Program membership. A **free Apple ID** is enough: Xcode can sign debug builds for the Simulator with **“Sign in with Apple ID”** under Xcode → Settings → Accounts.
+- **Physical iPhone:** You still typically use a free team for development; for TestFlight/App Store you’d use a paid program. For local USB runs, enable **Developer Mode** on the device when iOS asks.
+
+### CocoaPods / Swift Package Manager
+
+- **CocoaPods:** Not used. There is **no `Podfile`** — skip `pod install`.
+- **Swift Package Manager:** This project does **not** declare Swift packages in Xcode (no `Package.swift` / `Package.resolved` in the repo). **File → Packages** is not part of setup.
+
+### Environment variables and config files
+
+- **None required.** There is no `.env`, API key file, or backend URL for this local-first MVP.
+- **Info.plist** is **generated by Xcode** (`GENERATE_INFOPLIST_FILE = YES`). Location usage text is set in the target as `INFOPLIST_KEY_NSLocationWhenInUseUsageDescription` — you don’t edit a plist file by hand for a normal clone.
+
+---
+
+## 2. Project setup
+
+### Clone the repo
+
+In **Terminal**:
+
+```bash
+cd ~/Desktop   # or wherever you keep repos
+git clone <paste-the-HTTPS-or-SSH-URL-from-the-green-Code-button-on-GitHub>
+cd average-stepper   # use the folder name shown after clone (may match the repo name)
+```
+
+On the GitHub repo page: **Code → HTTPS** or **SSH** — copy that URL into `git clone`.
+
+### Open the project in Xcode
+
+1. In Finder, go to the cloned folder.
+2. Double-click **`AverageStepper.xcodeproj`**  
+   **or** Xcode → **File → Open…** → select **`AverageStepper.xcodeproj`**.
+
+### `.xcodeproj` vs `.xcworkspace`
+
+- Open **`AverageStepper.xcodeproj`** only.
+- There is **no** `Pods.xcworkspace` — do not look for one.
+
+### Package dependencies
+
+- **Nothing to resolve.** If Xcode’s **Package Dependencies** sidebar is empty, that’s expected.
+
+### Point `xcodebuild` at full Xcode (optional but useful)
+
+If Terminal commands say Xcode is not configured:
+
+```bash
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+```
+
+### Clean build folder (when to use it)
+
+If you see strange build errors after pulling changes:
+
+1. **Product → Clean Build Folder** (hold **Option** if needed: **Product** shows “Clean Build Folder”).
+2. Build again (**⌘B**).
+
+---
+
+## 3. Running the app
+
+### Choose an iPhone Simulator
+
+1. At the top of Xcode, click the **scheme** control (left of the Run/Stop buttons).
+2. Select scheme **`AverageStepper`** (matches the app target).
+3. Click the **destination** (e.g. **iPhone 16**) and pick any **iPhone** simulator with **iOS 17+**.
+
+If no simulators appear: **Xcode → Settings → Platforms** (or **Components**) and install an **iOS 17+** simulator runtime.
+
+### Build and run
+
+1. Press **⌘R** (or **Product → Run**).
+2. Wait for the build; the Simulator should launch and install **Average Stepper**.
+
+### Signing issues
+
+The project uses **automatic signing** with **`DEVELOPMENT_TEAM` unset** in the repo (you’ll assign your team locally).
+
+**Simulator — common fix**
+
+1. Xcode → select the **AverageStepper** project in the navigator.
+2. Select the **AverageStepper** target → **Signing & Capabilities**.
+3. Check **Automatically manage signing**.
+4. Choose your **Team** (Personal Team is fine for Simulator).
+
+**“Failed to register bundle identifier” / `com.example` conflicts**
+
+- The bundle ID is **`com.example.AverageStepper`**. If it clashes with another app on your Mac/account, change **Bundle Identifier** to something unique (e.g. `com.yourname.AverageStepper`) in the same **Signing** section.
+
+**Physical device**
+
+- Connect the iPhone, trust the computer, select the device as destination, pick a **Team**, and resolve any “Untrusted developer” prompts on the phone under **Settings → General → VPN & Device Management**.
+
+### Permissions on first launch
+
+You should see **one system dialog** for location (when the app requests **While Using the App**):
+
+- **“Average Stepper” Would Like to Access Your Location** — **Allow While Using App**, **Allow Once**, or **Don’t Allow** (wording may vary slightly by iOS version).
+
+The purpose string comes from the target’s **Info** (generated): it explains that location is used for routes and during walks, locally.
+
+There is **no** separate Motion & Fitness or Health permission in this MVP (steps are estimated from GPS distance × stride, not the pedometer).
+
+---
+
+## 4. Testing the main flows in Simulator
+
+Use a **fresh install** to see onboarding (delete the app from the Simulator home screen, or **Device → Erase All Content and Settings…** if you need a full reset).
+
+### Onboarding
+
+1. Launch the app → you see a **page-style onboarding** (multiple screens).
+2. Swipe or use **Continue** until the last page (**Location access**).
+3. Tap **Allow location** to trigger the system prompt (choose **Allow While Using** to continue testing).
+4. Tap **Start planning** → you should land on the **tab bar** with **Plan**, **Achievements**, **Settings**.
+
+### Location permission flow
+
+- **Allowed:** **Plan** → **Generate route** should be enabled (unless you denied; see below).
+- **Denied:** iOS **Settings → Privacy & Security → Location Services → Average Stepper** → set to **Never**, return to app → **Plan** should show a **location denied** card and disable **Generate route**; use **Open Settings** from the app to fix.
+
+### Generating a route from a step target
+
+1. Open the **Plan** tab.
+2. Adjust **Target steps** (stepper or quick-pick chips like **5k**).
+3. Tap **Generate route** and wait (**Building route…**).  
+   - Requires **network** (MapKit directions).  
+   - If there’s no GPS fix yet, the app may use a **fallback coordinate** and show a hint — that’s expected in Simulator.
+
+### Previewing a route
+
+1. After a successful generation, you navigate to **Route preview**.
+2. You should see a **map**, **plan summary**, and a list of **route options** with scores.
+3. Tap different options to update the map region.
+
+### Starting a walk
+
+1. On **Route preview**, tap **Start walk** (after selecting an option if needed).
+2. You move to **Walking** (active walk). The nav **Back** button is hidden by design during an active walk.
+
+### Completing a walk
+
+**Option A — DEBUG simulation (easiest in Simulator)**
+
+1. Open **Settings** tab → enable **Simulate walk position** (visible in **Debug** builds only).
+2. Go back through **Plan** → generate → preview → **Start walk**.
+3. On the walk screen, tap **Simulate position along route** repeatedly until the session completes (route progress / step goal), or use **End → End and save** from the menu to finish early (**user ended**).
+
+**Option B — Without simulation**
+
+- Use **End → End and save** to complete with reason **user ended**, or rely on real movement if you use a **custom location** and exercise the route (harder in Simulator).
+
+After completion you should see **Walk complete** with stats and optional confetti (unless Reduce Motion).
+
+### Viewing achievements
+
+1. Open the **Achievements** tab.
+2. After you’ve **completed** at least one walk (and it was recorded), badges may unlock depending on rules.  
+3. Use **Settings → Reset achievements** to clear history and re-test unlock behavior (destructive for local data).
+
+### Changing settings
+
+1. **Settings** tab:
+   - **Default step goal** presets
+   - **Stride**, **walking speed**, **loop closure radius**
+   - **Units** (metric/imperial)
+   - **Celebratory animations**
+   - **Reset** dialogs for achievements or all local data  
+2. Return to **Plan** — default step goal and sliders should match what you saved.
+
+### Resume-after-kill (optional)
+
+1. Start a walk, then **stop the app** from Xcode or swipe-kill in Simulator.
+2. Relaunch → a **full-screen resume** flow may appear if an active session was restored from disk. Complete or end the walk, then use **Plan next walk** to clear the stack.
+
+---
+
+## 5. Testing location features in Simulator
+
+### Set a simulated location (Xcode)
+
+With the app running in Simulator:
+
+1. **Simulator menu bar** → **Features → Location**:
+   - **Custom Location…** — enter latitude / longitude (e.g. a walkable urban area).
+   - Or pick a preset (e.g. **Apple Park**) to get a fixed point.
+
+**Xcode 15+** can also use **Debug → Simulate Location** when a device is connected; for Simulator, the **Simulator** menu is the usual path.
+
+### Test “movement” without walking
+
+1. **DEBUG:** **Settings → Simulate walk position** → on active walk use **Simulate position along route** (moves a test point along the polyline).
+2. Alternatively, change **Features → Location** between two custom coordinates between runs — not as smooth as real walking but useful for sanity checks.
+
+### Limitations (Simulator vs real GPS)
+
+| Topic | Simulator |
+|--------|-----------|
+| GPS realism | Single fixed or manually changed location; no true walking physics. |
+| **Horizontal accuracy** | May not exercise “weak GPS” the same way as outdoors. |
+| **MapKit directions** | Still hit Apple’s servers — needs network; can fail in bad network. |
+| **Background** | App uses **when-in-use** location only — no background walking mode. |
+
+For realistic GPS noise and pacing, test on a **physical iPhone** outdoors when you can.
+
+---
+
+## 6. Running tests
+
+### Run unit tests in Xcode
+
+1. Open **`AverageStepper.xcodeproj`**.
+2. Select scheme **AverageStepper** (test action uses the **AverageStepperTests** target as a dependency).
+3. Press **⌘U** or **Product → Test**.
+
+The **Test navigator** (⌘6) lists test classes and lets you re-run individual tests.
+
+### Test target
+
+| Target | Bundle ID (from project) | Purpose |
+|--------|--------------------------|---------|
+| **AverageStepperTests** | `com.example.AverageStepperTests` | Unit tests (`@testable import AverageStepper`) |
+
+### What the tests cover (by file in `AverageStepperTests/`)
+
+| File | Rough coverage |
+|------|----------------|
+| `AchievementRulesTests.swift` | Badge / achievement rule evaluation |
+| `GeodesyTests.swift` | Distance and coordinate helpers used in routing |
+| `HomeViewModelTests.swift` | Route generation flow: when Core Location updates stop after planning |
+| `RouteScoringTests.swift` | Route candidate scoring |
+| `StepDistanceEstimatorTests.swift` | Steps ↔ distance estimation |
+| `StreakManagerTests.swift` | Streak logic |
+| `WalkSessionManagerTests.swift` | Active walk session, pause/resume, complete/cancel with `MockLocationService` |
+| `MockLocationService.swift` | Test double (not a test case) |
+
+**Not** fully covered by unit tests: live **MapKit** routing end-to-end, full SwiftUI navigation, and real Core Location behavior — those stay **manual** (Simulator + device).
+
+### What still needs manual testing
+
+- Onboarding and **system** location dialogs.
+- **Route preview** map interaction and **Start walk** navigation.
+- **Achievements** UI and animations.
+- **Reset** confirmations and persistence on disk.
+- **Resume** full-screen after force-quit.
+- Network failures during **Generate route** (airplane mode, etc.).
+
+---
+
+## 7. Troubleshooting
+
+### Compile errors after `git pull`
+
+1. **Product → Clean Build Folder**, then **⌘B**.
+2. Confirm **deployment target** is **iOS 17.0** for the app target (matches project).
+3. Confirm you opened **`AverageStepper.xcodeproj`**, not a random folder.
+
+### “No such module ‘AverageStepper’” in tests
+
+- Run tests with the **AverageStepper** scheme (**⌘U**), not a partial file build. The test target depends on the app module.
+
+### Package resolution issues
+
+- This project has **no SPM packages**. If Xcode shows package errors, the project file may be corrupted — re-clone or restore `AverageStepper.xcodeproj` from git.
+
+### Simulator issues
+
+- **Simulator won’t boot:** Xcode → **Settings → Platforms** — install/reset iOS runtime.
+- **App installs but crashes on launch:** Check **Console** in Xcode for the Simulator process; try **Device → Erase All Content and Settings** for that simulator (wipes that device only).
+
+### Reset location & privacy prompts
+
+To see the **first-time location prompt** again:
+
+- Delete the app from the Simulator home screen (long-press → Remove App), **or**
+- iOS **Settings → General → Transfer or Reset iPhone → Reset → Reset Location & Privacy** (affects **all** apps — use a spare Simulator if you don’t want to wipe everything).
+
+### Location simulation not updating
+
+- Ensure **Features → Location** is not **None** if you need a fix.
+- After changing location, you may need to **background and foreground** the app or trigger **Generate route** again so `CLLocationManager` delivers a new sample.
+
+### `xcodebuild` in Terminal says Command Line Tools only
+
+Install **full Xcode** and run:
+
+```bash
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+```
+
+---
+
+## 8. Known limitations
+
+### In Simulator
+
+- **Steps** are **estimated** from moved distance × stride — not Apple Watch / HealthKit steps.
+- **Route quality** depends on MapKit’s pedestrian graph near your **simulated** point; some areas return **no route** — try another city or coordinates.
+- **Simulate position** exists only in **Debug** builds (the toggle is under `#if DEBUG` in Settings).
+
+### Should be tested on a real iPhone
+
+- True **GPS accuracy**, **walking speed**, and **on-route** adherence.
+- **Battery** and **cell/Wi‑Fi** behavior during long walks.
+- **Outdoor** route generation where pedestrian data is rich.
+
+---
+
+**Quick reference**
+
+| Action | Shortcut / menu |
+|--------|-------------------|
+| Run app | **⌘R** |
+| Run tests | **⌘U** |
+| Clean | **Product → Clean Build Folder** |
+| Simulator location | **Features → Location** |
+
+If anything in this guide doesn’t match what you see, your Xcode/iOS version may differ slightly — use the same logical steps in the current menus.
